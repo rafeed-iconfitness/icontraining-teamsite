@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the Icon Training Growth Team</title>
+  <meta name="description" content="Join the pre-launch growth operation behind Icon Training. Build skills, gain experience, and help create the future of fitness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --surface: #0e1315;
+      --panel: rgba(255, 255, 255, .05);
+      --panel-strong: rgba(255, 255, 255, .08);
+      --border: rgba(255, 255, 255, .10);
+      --border-strong: rgba(255, 255, 255, .18);
+      --accent: #FF5733;
+      --accent-dark: #b14527;
+      --text: #fff;
+      --muted: rgba(255, 255, 255, .68);
+      --faint: rgba(255, 255, 255, .48);
+      --max: 1200px;
+      --radius: 8px;
+      --radius-xl: 32px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      overflow-x: hidden;
+      letter-spacing: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .045;
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.45'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: .7; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 2001;
+      width: 100%;
+      padding: 16px 32px;
+      background: rgba(14, 19, 21, .95);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(64px);
+      -webkit-backdrop-filter: blur(64px);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 32px, black calc(100% - 32px), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 32px, black calc(100% - 32px), transparent 100%);
+    }
+
+    .navbar::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, .30), transparent);
+    }
+
+    .navbar::after {
+      content: "";
+      position: absolute;
+      left: 20%;
+      right: 20%;
+      bottom: -15px;
+      height: 22px;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 75%, rgba(255, 255, 255, .82), rgba(255, 255, 255, 0) 70%);
+      filter: blur(12px);
+      opacity: .45;
+      animation: glow 5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { opacity: .22; }
+      50% { opacity: .58; }
+    }
+
+    .nav-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 200px 1fr 200px;
+      align-items: center;
+      max-width: var(--max);
+      margin-inline: auto;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+    }
+
+    .logo img {
+      width: auto;
+      height: 38px;
+    }
+
+    .desktop-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .desktop-links a,
+    .mobile-menu a {
+      color: rgba(255, 255, 255, .72);
+      font-size: 18px;
+      font-weight: 500;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .desktop-links a:hover,
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    .nav-action {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      --button-bg: var(--accent-dark);
+      --button-bg-hover: #93361d;
+      --button-icon-color: var(--accent-dark);
+      position: relative;
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 18px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      background: var(--button-bg);
+      box-shadow: 0 0 15px rgba(177, 69, 39, .30);
+      transition: background-color .3s ease, box-shadow .3s ease, transform .3s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--button-bg-hover);
+      box-shadow: 0 0 25px rgba(177, 69, 39, .50);
+    }
+
+    .btn-pill {
+      min-height: 56px;
+      border-radius: 999px;
+      padding: 0 32px;
+      font-size: 20px;
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(177, 69, 39, .40);
+    }
+
+    .btn-pill:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(177, 69, 39, .60);
+    }
+
+    .btn-ghost {
+      --button-bg: transparent;
+      --button-bg-hover: rgba(255, 255, 255, .10);
+      --button-icon-color: #fff;
+      border: 1px solid rgba(255, 255, 255, .20);
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .btn-ghost:hover {
+      box-shadow: none;
+      transform: none;
+    }
+
+    .btn > span[aria-hidden="true"] {
+      position: relative;
+      display: inline-grid;
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      margin-left: 4px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #fff;
+      color: transparent;
+      line-height: 1;
+    }
+
+    .btn-ghost > span[aria-hidden="true"] {
+      background: rgba(255, 255, 255, .10);
+    }
+
+    .btn > span[aria-hidden="true"]::before,
+    .btn > span[aria-hidden="true"]::after {
+      content: "↗";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border-radius: inherit;
+      color: var(--button-icon-color);
+      font-size: 14px;
+      line-height: 1;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .btn > span[aria-hidden="true"]::after {
+      color: #fff;
+      background: #000;
+      opacity: 0;
+      transform: translate(-100%, 100%);
+    }
+
+    .btn:hover > span[aria-hidden="true"]::before {
+      opacity: 0;
+      transform: translate(100%, -100%);
+    }
+
+    .btn:hover > span[aria-hidden="true"]::after {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .mobile-controls,
+    .mobile-menu { display: none; }
+
+    .hamburger {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      border: 0;
+      background: transparent;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      transition: transform .28s ease, opacity .28s ease;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      min-height: 100svh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 34px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background: rgba(20, 20, 20, .98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: opacity .32s ease, visibility .32s ease, transform .32s ease;
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-menu a {
+      font-size: 34px;
+      font-weight: 600;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 74% 42%, rgba(255, 87, 51, .20), transparent 30%),
+        linear-gradient(180deg, #030303 0%, #000 76%);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0 0 0 42%;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left bottom;
+      opacity: .86;
+      filter: saturate(1.05);
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, #000 0%, rgba(0, 0, 0, .74) 18%, rgba(0, 0, 0, .18) 50%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0) 34%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 64px));
+      margin-inline: auto;
+      padding: 80px 0 70px;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .eyebrow,
+    .label {
+      display: block;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      letter-spacing: .12em;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 8px rgba(255, 87, 51, .12);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(.72); opacity: .62; }
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 28px;
+      color: #fff;
+      font-size: clamp(64px, 8.2vw, 112px);
+      font-weight: 900;
+      line-height: .86;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 .accent,
+    h2 .accent,
+    h3 .accent {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin-bottom: 34px;
+      color: rgba(255, 255, 255, .80);
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .stats {
+      border-block: 1px solid var(--border);
+      background: #050505;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      min-height: 140px;
+      padding: 30px 28px;
+      border-left: 1px solid var(--border);
+    }
+
+    .stat:first-child { border-left: 0; }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 60px;
+      font-weight: 900;
+      line-height: .86;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 12px;
+      color: var(--faint);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .section {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0;
+      background: #000;
+    }
+
+    .section-soft {
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255, 87, 51, .10), transparent 32%),
+        #000;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      margin: 14px 0 16px;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 900;
+      line-height: .94;
+      text-transform: uppercase;
+    }
+
+    .section-lead {
+      max-width: 680px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.38;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+      gap: 72px;
+      align-items: center;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 87, 51, .40);
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .step-num,
+    .card-kicker {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: rgba(255, 87, 51, .13);
+      border: 1px solid rgba(255, 87, 51, .36);
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .step p,
+    .card p,
+    .testimonial-card p,
+    .process-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.42;
+    }
+
+    .phone-wrap {
+      position: relative;
+      isolation: isolate;
+      margin-inline: auto;
+      width: min(100%, 360px);
+    }
+
+    .phone-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 16% -18%;
+      z-index: -1;
+      border-radius: 999px;
+      background: rgba(255, 87, 51, .20);
+      filter: blur(90px);
+    }
+
+    .phone-shell {
+      position: relative;
+      aspect-ratio: 549 / 1030;
+    }
+
+    .phone-screen {
+      position: absolute;
+      left: 11.66%;
+      right: 11.48%;
+      top: 11.46%;
+      bottom: 5.34%;
+      overflow: hidden;
+      border-radius: 0 0 40px 40px;
+      background: #000;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .phone-frame {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .floating-chip {
+      position: absolute;
+      z-index: 4;
+      right: -14px;
+      bottom: 18%;
+      max-width: 190px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(14, 19, 21, .78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .35);
+    }
+
+    .floating-chip strong {
+      display: block;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .floating-chip span {
+      display: block;
+      margin-top: 6px;
+      color: var(--faint);
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .feature-panel {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 44px;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: #050505;
+      min-height: 520px;
+    }
+
+    .feature-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, .92), rgba(0, 0, 0, .68), rgba(0, 0, 0, .22)),
+        url("assets/versioned/cta/trainer-cta-v1.png") right center / cover no-repeat;
+      opacity: .78;
+      filter: saturate(1.05);
+    }
+
+    .feature-copy,
+    .feature-list {
+      position: relative;
+      z-index: 1;
+      padding: 56px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      align-self: stretch;
+      align-content: center;
+    }
+
+    .acc {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .07);
+      overflow: hidden;
+    }
+
+    .acc button {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      padding: 18px 20px;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .acc p {
+      display: none;
+      margin: -4px 20px 20px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .acc.active {
+      border-color: rgba(255, 87, 51, .42);
+      background: rgba(255, 87, 51, .12);
+    }
+
+    .acc.active p { display: block; }
+    .acc.active .plus { transform: rotate(45deg); color: var(--accent); }
+    .plus { transition: transform .2s ease; }
+
+    .card-grid,
+    .gain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card,
+    .testimonial-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .025));
+      transition: transform .2s ease, border-color .2s ease, background-color .2s ease;
+    }
+
+    .card::after,
+    .testimonial-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+
+    .card:hover,
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 87, 51, .42);
+    }
+
+    .card:hover::after,
+    .testimonial-card:hover::after { transform: scaleX(1); }
+
+    .card-kicker {
+      margin-bottom: 22px;
+      width: 42px;
+      height: 42px;
+      font-size: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: .95;
+      text-transform: uppercase;
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-top: 24px;
+      border: 1px solid rgba(255, 87, 51, .34);
+      border-radius: 999px;
+      padding: 7px 11px;
+      color: var(--accent);
+      background: rgba(255, 87, 51, .08);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+    }
+
+    .card .num {
+      position: absolute;
+      right: 22px;
+      top: 18px;
+      color: rgba(255, 87, 51, .18);
+      font-size: 70px;
+      font-weight: 900;
+      line-height: .8;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .9fr .9fr;
+      gap: 16px;
+    }
+
+    .testimonial-card.featured {
+      grid-row: span 2;
+      min-height: 430px;
+    }
+
+    .quote-mark {
+      height: 52px;
+      color: var(--accent);
+      font-size: 92px;
+      font-weight: 900;
+      line-height: .72;
+    }
+
+    .testimonial-card.featured p {
+      color: rgba(255, 255, 255, .78);
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .person {
+      margin-top: 28px;
+    }
+
+    .person strong {
+      display: block;
+      color: #fff;
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .outcome {
+      display: block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .reaction {
+      display: inline-flex;
+      gap: 12px;
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 11px;
+      background: rgba(255, 255, 255, .07);
+      color: rgba(255, 255, 255, .78);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .process-card {
+      border-top: 1px solid var(--border-strong);
+      padding-top: 22px;
+    }
+
+    .process-card strong {
+      display: block;
+      color: var(--accent);
+      font-size: 56px;
+      font-weight: 900;
+      line-height: .85;
+    }
+
+    .process-card h3 {
+      margin: 12px 0 12px;
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .apply-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: #050505;
+    }
+
+    .apply-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, .90), rgba(0, 0, 0, .68), rgba(0, 0, 0, .24)),
+        url("assets/versioned/cta/waitlist-cta-v1.png") 75% 45% / contain no-repeat;
+      opacity: .78;
+      filter: blur(1px);
+    }
+
+    .apply-content {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      padding: 60px;
+    }
+
+    .form {
+      display: grid;
+      gap: 15px;
+      max-width: 520px;
+      margin-top: 30px;
+    }
+
+    label {
+      display: block;
+      margin: 0 0 8px 8px;
+      color: rgba(255, 255, 255, .78);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(255, 255, 255, .20);
+      border-radius: 999px;
+      outline: 0;
+      background: rgba(255, 255, 255, .10);
+      color: #fff;
+      padding: 0 22px;
+      font-size: 18px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input::placeholder { color: rgba(255, 255, 255, .32); }
+    select option { color: #000; }
+
+    input:focus,
+    select:focus {
+      border-color: rgba(255, 87, 51, .62);
+      box-shadow: 0 0 0 4px rgba(255, 87, 51, .12);
+    }
+
+    .submit {
+      width: 100%;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: var(--accent-dark);
+    }
+
+    .submit::before { display: none; }
+
+    .note {
+      margin: 2px 0 0;
+      color: rgba(255, 255, 255, .50);
+      font-size: 15px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .note.success { color: rgba(80, 220, 142, .92); }
+    .note.error { color: rgba(255, 126, 98, .92); }
+
+    .guard-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      background: #000;
+      padding: 28px 0;
+      color: rgba(255, 255, 255, .52);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .footer-brand img {
+      width: auto;
+      height: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 980px) {
+      .nav-inner {
+        grid-template-columns: 1fr auto;
+      }
+
+      .desktop-links,
+      .nav-action {
+        display: none;
+      }
+
+      .mobile-controls {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .mobile-menu { display: flex; }
+
+      .hero {
+        min-height: 760px;
+        align-items: flex-start;
+      }
+
+      .hero-media {
+        inset: 26% -20% 0 10%;
+        opacity: .55;
+      }
+
+      .hero-media::before {
+        background:
+          linear-gradient(90deg, #000 0%, rgba(0, 0, 0, .72) 32%, rgba(0, 0, 0, .10) 100%),
+          linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0) 45%);
+      }
+
+      .hero-content {
+        width: min(100% - 28px, var(--max));
+        padding-top: 92px;
+      }
+
+      .stats-grid,
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(odd) { border-left: 0; }
+      .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
+
+      .split,
+      .feature-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-wrap {
+        width: min(100%, 330px);
+      }
+
+      .feature-copy,
+      .feature-list,
+      .apply-content {
+        padding: 42px;
+      }
+
+      .card-grid,
+      .gain-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonial-card.featured { grid-row: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .navbar {
+        padding: 14px;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+
+      .logo img { height: 30px; }
+      .mobile-controls .btn { min-height: 38px; padding: 0 14px; font-size: 15px; }
+
+      .hero {
+        min-height: 820px;
+      }
+
+      .hero-media {
+        inset: 35% -44% 0 -8%;
+      }
+
+      h1 {
+        font-size: 58px;
+      }
+
+      .hero p,
+      .section-lead {
+        font-size: 20px;
+      }
+
+      .button-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button-row .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-title {
+        font-size: 44px;
+      }
+
+      .stats-grid,
+      .process,
+      .card-grid,
+      .gain-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: 118px;
+        border-left: 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .stat:first-child { border-top: 0; }
+
+      .split {
+        gap: 44px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-panel,
+      .apply-panel {
+        border-radius: 22px;
+      }
+
+      .feature-copy,
+      .feature-list,
+      .apply-content {
+        padding: 28px;
+      }
+
+      .apply-panel::before {
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, .88), rgba(0, 0, 0, .76)),
+          url("assets/versioned/cta/waitlist-cta-v1.png") center bottom / 130% auto no-repeat;
+      }
+
+      .floating-chip {
+        right: 0;
+        bottom: 14%;
+      }
+
+      .footer-inner,
+      .footer-brand,
+      .footer-links {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="Icon home">
+        <img src="assets/versioned/brand/icon-logo-v1.svg" alt="ICON" />
+      </a>
+      <ul class="desktop-links">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#stories">Stories</a></li>
+      </ul>
+      <div class="nav-action">
+        <a href="#apply" class="btn" data-apply-cta>Apply Now <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="mobile-controls">
+        <a href="#apply" class="btn" data-apply-cta>Apply <span aria-hidden="true">↗</span></a>
+        <button class="hamburger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <ul class="mobile-menu" id="mobile-menu">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#roles">Roles</a></li>
+    <li><a href="#stories">Stories</a></li>
+  </ul>
+
+  <header class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/versioned/home/icon-guy-with-phone-v1.png" alt="" />
+    </div>
+    <div class="wrap hero-content">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span>Now recruiting - Growth Team</div>
+        <h1>Don't just learn marketing. <span class="accent">Help build the machine.</span></h1>
+        <p>Join the pre-launch growth operation behind Icon Training. Real work. Real feedback. Real experience inside a fitness-tech company being built from the ground up.</p>
+        <div class="button-row">
+          <a href="#apply" class="btn btn-pill" data-apply-cta>Apply to Join <span aria-hidden="true">↗</span></a>
+          <a href="#mission" class="btn btn-ghost">See how it works <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="Growth team stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><strong>55+</strong><span>Signed athlete contracts</span></div>
+      <div class="stat"><strong>15M+</strong><span>Combined follower reach</span></div>
+      <div class="stat"><strong>230+</strong><span>Growth contributors</span></div>
+      <div class="stat"><strong>PRE</strong><span>Launch opportunity</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="mission">
+    <div class="wrap split">
+      <div>
+        <span class="label">What is Icon Training?</span>
+        <h2 class="section-title">AI-powered versions of <span class="accent">real coaches.</span></h2>
+        <p class="section-lead">Icon Training turns the philosophy, voice and expertise of athletes and trainers into intelligent coaching experiences users can access from their phone.</p>
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">1</div>
+            <div><h3>Trainers create an Icon</h3><p>An AI version of themselves: their coaching style, experience, tone and decision-making.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-num">2</div>
+            <div><h3>Users subscribe for coaching</h3><p>Personalised fitness guidance from people they already trust, available whenever they need it.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-num">3</div>
+            <div><h3>Icons improve over time</h3><p>Through trainer feedback, user interaction and ongoing refinement, every Icon becomes more valuable.</p></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="phone-shell">
+          <div class="phone-screen">
+            <img src="assets/versioned/features/ai-powered-chat-v1.png" alt="" />
+          </div>
+          <img class="phone-frame" src="assets/versioned/features/phone-frame-v1.png" alt="" />
+        </div>
+        <div class="floating-chip">
+          <strong>Your Icon adapts</strong>
+          <span>Guidance that reacts to recovery, consistency and real life.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap feature-panel">
+      <div class="feature-copy">
+        <span class="label">Why the Growth Team exists</span>
+        <h2 class="section-title">Bridging the gap between education and <span class="accent">real experience.</span></h2>
+        <p class="section-lead">Most people are told they need experience before anyone will give them experience. The Growth Team exists to break that loop.</p>
+      </div>
+      <div class="feature-list" aria-label="Growth team principles">
+        <article class="acc active">
+          <button type="button">Real work, not pretend tasks <span class="plus" aria-hidden="true">+</span></button>
+          <p>You contribute to outreach, content, testing, recruitment and community growth for a live start-up.</p>
+        </article>
+        <article class="acc">
+          <button type="button">High standards <span class="plus" aria-hidden="true">+</span></button>
+          <p>You get useful feedback, clear expectations and the chance to raise the quality of your work quickly.</p>
+        </article>
+        <article class="acc">
+          <button type="button">Supportive team <span class="plus" aria-hidden="true">+</span></button>
+          <p>You work with contributors around the world who are learning, testing ideas and building momentum together.</p>
+        </article>
+        <article class="acc">
+          <button type="button">Clear opportunity <span class="plus" aria-hidden="true">+</span></button>
+          <p>The people who communicate well, execute consistently and improve can earn more trust and responsibility.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="roles">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="label">Choose your lane</span>
+        <h2 class="section-title">Help grow the brand from the <span class="accent">inside.</span></h2>
+        <p class="section-lead">Join a role that matches your skills, interests and ambition. You can start focused, then grow into new areas as you prove yourself.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card"><span class="card-kicker">PT</span><h3>Partnerships</h3><p>Conduct outreach to athletes, trainers and fitness creators. Build conversations that create commercial opportunities.</p><span class="tag">Revenue share available</span></article>
+        <article class="card"><span class="card-kicker">CT</span><h3>Content</h3><p>Create social content, visual assets, short-form edits and campaign ideas that sharpen the Icon Training brand.</p><span class="tag">Portfolio work</span></article>
+        <article class="card"><span class="card-kicker">AF</span><h3>Affiliates</h3><p>Help build wider distribution channels, community partnerships and growth loops around the product.</p><span class="tag">Brand building</span></article>
+        <article class="card"><span class="card-kicker">QA</span><h3>App Testing</h3><p>Test the app, report bugs, suggest improvements and help shape the product before public launch.</p><span class="tag">Product influence</span></article>
+        <article class="card"><span class="card-kicker">RC</span><h3>Recruitment</h3><p>Help identify, welcome and support new contributors as the Growth Team expands internationally.</p><span class="tag">Leadership pathway</span></article>
+        <article class="card"><span class="card-kicker">FD</span><h3>Fundraising</h3><p>Support research, investor preparation and strategic growth work for people ready for a higher-trust role.</p><span class="tag">Invite only</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gain">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="label">What you gain</span>
+        <h2 class="section-title">This is where your CV stops being <span class="accent">theory.</span></h2>
+        <p class="section-lead">The goal is simple: help you leave with better skills, clearer proof, stronger confidence and a real story to tell.</p>
+      </div>
+      <div class="gain-grid">
+        <article class="card"><span class="num">01</span><h3>Real experience</h3><p>Work on a live marketing and growth operation for a pre-launch fitness-tech start-up.</p></article>
+        <article class="card"><span class="num">02</span><h3>Verifiable work</h3><p>Build portfolio assets and contributions that can be shown to employers, clients and recruiters.</p></article>
+        <article class="card"><span class="num">03</span><h3>Global team</h3><p>Collaborate with contributors from around the world across different functions and skill levels.</p></article>
+        <article class="card"><span class="num">04</span><h3>Mentorship</h3><p>Get feedback, guidance, weekly sessions and exposure to how real start-up decisions are made.</p></article>
+        <article class="card"><span class="num">05</span><h3>Leadership path</h3><p>The people who communicate, execute and improve can create their own next opportunity.</p></article>
+        <article class="card"><span class="num">06</span><h3>Revenue share</h3><p>Partnerships contributors can earn attribution-based revenue share on trainers they onboard.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="stories">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="label">Contributor stories</span>
+        <h2 class="section-title">Real people. <span class="accent">Real progress.</span></h2>
+        <p class="section-lead">Growth Team contributors are not watching from the sidelines. They are building, learning, improving and creating career momentum.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card featured"><div class="quote-mark">"</div><p>The skills, confidence and experience I've gained helped me secure a full-time paid Social Media Internship. I'm incredibly grateful for the opportunity to have been part of such a positive and inspiring team.</p><div class="reaction"><span>4 likes</span><span>4 saves</span></div><div class="person"><strong>Divya</strong><span class="outcome">Career progression</span></div></article>
+        <article class="testimonial-card"><div class="quote-mark">"</div><p>I didn't realise I was shaping the beginning of my career path, but that's exactly what happened when I joined Icon Training.</p><div class="person"><strong>Abeeda</strong><span class="outcome">Portfolio + confidence</span></div></article>
+        <article class="testimonial-card"><div class="quote-mark">"</div><p>Those reviews shaped me. They challenged how I thought about my craft and raised my standards in ways I hadn't expected.</p><div class="person"><strong>Kelvin</strong><span class="outcome">Creative development</span></div></article>
+        <article class="testimonial-card"><div class="quote-mark">"</div><p>The pace is lightning-fast, the feedback is real, and the growth is limitless.</p><div class="person"><strong>Viktoriia</strong><span class="outcome">Start-up exposure</span></div></article>
+        <article class="testimonial-card"><div class="quote-mark">"</div><p>It is rare to find a role this early on where you're not just learning, you're actually building something real.</p><div class="person"><strong>Abeeda</strong><span class="outcome">Real-world work</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="label">How it works</span>
+      <h2 class="section-title">Apply. Join Discord. <span class="accent">Start building.</span></h2>
+      <div class="process">
+        <article class="process-card"><strong>01</strong><h3>Apply</h3><p>Submit your details and choose the role that interests you most.</p></article>
+        <article class="process-card"><strong>02</strong><h3>Join</h3><p>Receive your Discord invite and start in the onboarding channels.</p></article>
+        <article class="process-card"><strong>03</strong><h3>Choose</h3><p>Select your role and read the relevant guide before contributing.</p></article>
+        <article class="process-card"><strong>04</strong><h3>Execute</h3><p>Communicate clearly, complete useful work, and build momentum.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="wrap apply-panel">
+      <div class="apply-content">
+        <span class="label">Ready to join us?</span>
+        <h2 class="section-title">Become part of the <span class="accent">Growth Team.</span></h2>
+        <p class="section-lead">Start with the form below. If accepted, you'll receive a Discord invite and instructions for your first steps.</p>
+        <form class="form" id="application-form" action="/api/apply" method="post">
+          <div class="guard-field" aria-hidden="true">
+            <label for="company-website">Company website</label>
+            <input id="company-website" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div><label for="first-name">First Name</label><input id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="Your first name" required></div>
+          <div><label for="last-name">Last Name</label><input id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="Your last name" required></div>
+          <div><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required></div>
+          <div>
+            <label for="role">Which role interests you?</label>
+            <select id="role" name="role" required>
+              <option value="">Select a role</option>
+              <option>Partnerships</option>
+              <option>Content</option>
+              <option>Affiliates</option>
+              <option>App Testing</option>
+              <option>Recruitment</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <button class="btn submit" type="submit" id="application-submit">Apply to Join <span aria-hidden="true">↗</span></button>
+          <p class="note" id="form-note" aria-live="polite">You'll receive a Discord invite via email once your application is reviewed.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a href="#" aria-label="Icon home"><img src="assets/versioned/brand/icon-logo-v1.svg" alt="ICON" /></a>
+        <span>© 2026 ICON. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#mission">Mission</a>
+        <a href="#roles">Roles</a>
+        <a href="#apply">Apply</a>
+        <span>icontraining.app</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    hamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("active");
+      hamburger.classList.toggle("active", isOpen);
+      hamburger.setAttribute("aria-expanded", String(isOpen));
+      hamburger.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+
+    document.querySelectorAll(".acc button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".acc");
+        document.querySelectorAll(".acc").forEach((acc) => {
+          if (acc !== item) acc.classList.remove("active");
+        });
+        item.classList.toggle("active");
+      });
+    });
+
+    const scrollToPageBottom = () => {
+      const maxScrollTop = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      ) - window.innerHeight;
+
+      window.scrollTo({
+        top: Math.max(maxScrollTop, 0),
+        behavior: "smooth",
+      });
+    };
+
+    document.querySelectorAll("[data-apply-cta]").forEach((cta) => {
+      cta.addEventListener("click", (event) => {
+        event.preventDefault();
+        scrollToPageBottom();
+      });
+    });
+
+    const applicationForm = document.getElementById("application-form");
+    const applicationSubmit = document.getElementById("application-submit");
+    const formNote = document.getElementById("form-note");
+    const initialFormNote = formNote.textContent;
+
+    const setFormNote = (message, status) => {
+      formNote.textContent = message;
+      formNote.classList.remove("success", "error");
+
+      if (status) {
+        formNote.classList.add(status);
+      }
+    };
+
+    applicationForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setFormNote(initialFormNote);
+      applicationSubmit.disabled = true;
+      applicationSubmit.textContent = "Applying...";
+
+      try {
+        const response = await fetch(applicationForm.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(applicationForm)),
+        });
+        const result = await response.json().catch(() => null);
+
+        if (!response.ok || !result?.success) {
+          setFormNote(result?.message || "Failed to submit application. Please try again.", "error");
+          return;
+        }
+
+        applicationForm.reset();
+        setFormNote(result.message || "Application submitted successfully!", "success");
+      } catch (error) {
+        setFormNote("Failed to submit application. Please try again.", "error");
+      } finally {
+        applicationSubmit.disabled = false;
+        applicationSubmit.innerHTML = 'Apply to Join <span aria-hidden="true">↗</span>';
+      }
+    });
+  </script>
+</body>
+</html>

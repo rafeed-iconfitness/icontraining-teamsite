@@ -1372,29 +1372,15 @@
       <div class="apply-content">
         <span class="label">Ready to join us?</span>
         <h2 class="section-title">Become part of the <span class="accent">Growth Team.</span></h2>
-        <p class="section-lead">Start with the form below. If accepted, you'll receive a Discord invite and instructions for your first steps.</p>
+        <p class="section-lead">Drop your email below and we'll send your Discord invite straight to your inbox.</p>
         <form class="form" id="application-form" action="/api/apply" method="post">
           <div class="guard-field" aria-hidden="true">
             <label for="company-website">Company website</label>
             <input id="company-website" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <div><label for="first-name">First Name</label><input id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="Your first name" required></div>
-          <div><label for="last-name">Last Name</label><input id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="Your last name" required></div>
           <div><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required></div>
-          <div>
-            <label for="role">Which role interests you?</label>
-            <select id="role" name="role" required>
-              <option value="">Select a role</option>
-              <option>Partnerships</option>
-              <option>Content</option>
-              <option>Affiliates</option>
-              <option>App Testing</option>
-              <option>Recruitment</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <button class="btn submit" type="submit" id="application-submit">Apply to Join <span aria-hidden="true">↗</span></button>
-          <p class="note" id="form-note" aria-live="polite">You'll receive a Discord invite via email once your application is reviewed.</p>
+          <button class="btn submit" type="submit" id="application-submit">Get My Discord Invite <span aria-hidden="true">↗</span></button>
+          <p class="note" id="form-note" aria-live="polite">We'll email your Discord invite right after you submit.</p>
         </form>
       </div>
     </div>
@@ -1482,7 +1468,7 @@
       event.preventDefault();
       setFormNote(initialFormNote);
       applicationSubmit.disabled = true;
-      applicationSubmit.textContent = "Applying...";
+      applicationSubmit.textContent = "Sending...";
 
       try {
         const response = await fetch(applicationForm.action, {
@@ -1503,7 +1489,7 @@
         setFormNote("Failed to submit application. Please try again.", "error");
       } finally {
         applicationSubmit.disabled = false;
-        applicationSubmit.innerHTML = 'Apply to Join <span aria-hidden="true">↗</span>';
+        applicationSubmit.innerHTML = 'Get My Discord Invite <span aria-hidden="true">↗</span>';
       }
     });
   </script>

@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer");
 const HONEYPOT_FIELD = "companyWebsite";
 const RATE_LIMIT_MESSAGE = "Too many requests. Please try again later.";
 const HONEYPOT_MESSAGE = "Unable to submit. Please try again.";
-const DEFAULT_NOTIFY_EMAIL = "mish@icontraining.app";
 
 const rateLimitStore = new Map();
 
@@ -140,47 +139,15 @@ function getTransporter() {
   return cachedTransporter;
 }
 
-function buildNotificationEmail({ firstName, lastName, email, role }) {
-  const fullName = `${firstName} ${lastName}`;
-  const text = [
-    "New Growth Team application",
-    "",
-    `Name:  ${fullName}`,
-    `Email: ${email}`,
-    `Role:  ${role}`,
-  ].join("\n");
-
-  const html = `
-    <div style="font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.6">
-      <h2 style="margin:0 0 16px">New Growth Team application</h2>
-      <table style="border-collapse:collapse">
-        <tr><td style="padding:4px 16px 4px 0;color:#666">Name</td><td style="padding:4px 0"><strong>${escapeHtml(
-          fullName
-        )}</strong></td></tr>
-        <tr><td style="padding:4px 16px 4px 0;color:#666">Email</td><td style="padding:4px 0"><a href="mailto:${escapeHtml(
-          email
-        )}">${escapeHtml(email)}</a></td></tr>
-        <tr><td style="padding:4px 16px 4px 0;color:#666">Role</td><td style="padding:4px 0">${escapeHtml(
-          role
-        )}</td></tr>
-      </table>
-    </div>
-  `;
-
-  return { text, html };
-}
-
-function buildWelcomeEmail({ firstName, inviteUrl }) {
-  const greetingName = firstName || "there";
-
+function buildInviteEmail({ inviteUrl }) {
   const inviteText = inviteUrl
     ? `Your next step is to join our Discord — that's where the team coordinates, shares resources, and where you'll get started on your first tasks.\n\nJoin here: ${inviteUrl}`
     : "Your next step is to join our Discord — we'll send your invite link in a follow-up email shortly.";
 
   const text = [
-    `Hi ${greetingName},`,
+    "Hi there,",
     "",
-    "Thanks for applying to the Icon Training Growth Team! We're excited to have you on board.",
+    "Thanks for joining the Icon Training Growth Team! We're excited to have you on board.",
     "",
     inviteText,
     "",
@@ -205,8 +172,8 @@ function buildWelcomeEmail({ firstName, inviteUrl }) {
   const html = `
     <div style="font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.6;max-width:560px">
       <h2 style="margin:0 0 16px">Welcome to the Icon Training Growth Team 🎉</h2>
-      <p>Hi ${escapeHtml(greetingName)},</p>
-      <p>Thanks for applying to the Icon Training Growth Team! We're excited to have you on board.</p>
+      <p>Hi there,</p>
+      <p>Thanks for joining the Icon Training Growth Team! We're excited to have you on board.</p>
       ${inviteHtml}
       <p style="margin-top:28px">See you inside,<br><strong>The Icon Training Team</strong></p>
     </div>
@@ -242,28 +209,10 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const firstName = String(body.firstName || "").trim();
-  const lastName = String(body.lastName || "").trim();
   const email = String(body.email || "").trim().toLowerCase();
-  const role = String(body.role || "").trim();
-
-  if (!firstName) {
-    json(res, 400, { success: false, message: "First name is required" });
-    return;
-  }
-
-  if (!lastName) {
-    json(res, 400, { success: false, message: "Last name is required" });
-    return;
-  }
 
   if (!isValidEmail(email)) {
     json(res, 400, { success: false, message: "Enter a valid email address" });
-    return;
-  }
-
-  if (!role) {
-    json(res, 400, { success: false, message: "Please choose a role" });
     return;
   }
 
@@ -285,53 +234,27 @@ module.exports = async function handler(req, res) {
   }
 
   const fromAddress = `Icon Training <${process.env.GMAIL_USER}>`;
-  const notifyEmail = process.env.NOTIFY_EMAIL || DEFAULT_NOTIFY_EMAIL;
   const inviteUrl = (process.env.DISCORD_INVITE_URL || "").trim();
 
   if (!inviteUrl) {
-    console.warn("DISCORD_INVITE_URL is not set — applicant email will omit the invite link.");
+    console.warn("DISCORD_INVITE_URL is not set — the email will omit the invite link.");
   }
 
   try {
     const transporter = getTransporter();
-
-    // Notify the team first so the lead is always captured.
-    const notification = buildNotificationEmail({
-      firstName,
-      lastName,
-      email,
-      role,
-    });
+    const invite = buildInviteEmail({ inviteUrl });
 
     await transporter.sendMail({
       from: fromAddress,
-      to: notifyEmail,
-      replyTo: email,
-      subject: `New Growth Team application — ${firstName} ${lastName} (${role})`,
-      text: notification.text,
-      html: notification.html,
+      to: email,
+      subject: "Welcome to the Icon Training Growth Team",
+      text: invite.text,
+      html: invite.html,
     });
-
-    // Send the applicant their welcome + Discord invite. Best-effort: a
-    // failure here shouldn't fail the submission the team already received.
-    try {
-      const welcome = buildWelcomeEmail({ firstName, inviteUrl });
-
-      await transporter.sendMail({
-        from: fromAddress,
-        to: email,
-        replyTo: notifyEmail,
-        subject: "Welcome to the Icon Training Growth Team",
-        text: welcome.text,
-        html: welcome.html,
-      });
-    } catch (welcomeError) {
-      console.error("Failed to send applicant welcome email:", welcomeError);
-    }
 
     json(res, 200, {
       success: true,
-      message: "Application submitted! Check your email for your Discord invite.",
+      message: "Check your email for your Discord invite!",
     });
   } catch (error) {
     console.error("Application submission error:", error);

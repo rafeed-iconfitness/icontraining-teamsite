@@ -4,6 +4,8 @@ const nodemailer = require("nodemailer");
 const HONEYPOT_FIELD = "companyWebsite";
 const RATE_LIMIT_MESSAGE = "Too many requests. Please try again later.";
 const HONEYPOT_MESSAGE = "Unable to submit. Please try again.";
+const ICON_LOGO_EMAIL_URL =
+  "https://www.icontraining.app/versioned/brand/icon-logo-email-v1.png";
 
 const rateLimitStore = new Map();
 
@@ -140,43 +142,79 @@ function getTransporter() {
 }
 
 function buildInviteEmail({ inviteUrl }) {
-  const inviteText = inviteUrl
-    ? `Your next step is to join our Discord — that's where the team coordinates, shares resources, and where you'll get started on your first tasks.\n\nJoin here: ${inviteUrl}`
-    : "Your next step is to join our Discord — we'll send your invite link in a follow-up email shortly.";
-
   const text = [
-    "Hi there,",
+    "Thanks for expressing an interest in joining the Icon Training Growth Team.",
     "",
-    "Thanks for joining the Icon Training Growth Team! We're excited to have you on board.",
+    "Join the Discord server, attend onboarding, contribute, succeed.",
     "",
-    inviteText,
-    "",
-    "See you inside,",
-    "The Icon Training Team",
+    inviteUrl
+      ? `Join the Growth Team:\n${inviteUrl}`
+      : "We'll send your Discord invite link in a follow-up email shortly.",
   ].join("\n");
 
-  const inviteHtml = inviteUrl
+  const ctaHtml = inviteUrl
     ? `
-      <p>Your next step is to join our Discord — that's where the team coordinates, shares resources, and where you'll get started on your first tasks.</p>
-      <p style="margin:28px 0">
-        <a href="${escapeHtml(inviteUrl)}"
-           style="display:inline-block;background:#FF5733;color:#fff;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:8px">
-          Join the Discord →
-        </a>
-      </p>
-      <p style="color:#666;font-size:13px">If the button doesn't work, copy this link into your browser:<br>
-        <a href="${escapeHtml(inviteUrl)}" style="color:#FF5733">${escapeHtml(inviteUrl)}</a>
-      </p>`
-    : `<p>Your next step is to join our Discord — we'll send your invite link in a follow-up email shortly.</p>`;
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+                      <tr>
+                        <td>
+                          <a href="${escapeHtml(inviteUrl)}" style="display:block;background:#FF5733;border-radius:10px;color:#050505;font-size:16px;line-height:20px;font-weight:700;text-align:center;text-decoration:none;padding:15px 18px;">
+                            Join the Growth Team
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                    <p style="margin:26px 0 0 0;color:#777777;font-size:13px;line-height:21px;">
+                      If the button does not open, copy this link into your browser:<br>
+                      <a href="${escapeHtml(inviteUrl)}" style="color:#FFB29F;text-decoration:underline;">${escapeHtml(inviteUrl)}</a>
+                    </p>`
+    : `
+                    <p style="margin:0;color:#b8b8b8;font-size:16px;line-height:26px;">
+                      We'll send your Discord invite link in a follow-up email shortly.
+                    </p>`;
 
   const html = `
-    <div style="font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.6;max-width:560px">
-      <h2 style="margin:0 0 16px">Welcome to the Icon Training Growth Team 🎉</h2>
-      <p>Hi there,</p>
-      <p>Thanks for joining the Icon Training Growth Team! We're excited to have you on board.</p>
-      ${inviteHtml}
-      <p style="margin-top:28px">See you inside,<br><strong>The Icon Training Team</strong></p>
-    </div>
+    <!doctype html>
+    <html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to the Icon Training Growth Team</title>
+      </head>
+      <body style="margin:0;padding:0;background:#050505;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background:#050505;margin:0;padding:0;">
+          <tr>
+            <td align="center" style="padding:32px 16px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:600px;border-collapse:separate;">
+                <tr>
+                  <td style="padding:0 0 18px 0;">
+                    <img src="${ICON_LOGO_EMAIL_URL}" width="96" height="52" alt="Icon Training" style="display:block;width:96px;height:52px;border:0;outline:none;text-decoration:none;">
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background:#0d0d0d;border:1px solid #242424;border-radius:18px;padding:34px 28px;">
+                    <div style="display:inline-block;margin:0 0 22px 0;padding:7px 12px;border:1px solid rgba(255,87,51,0.35);border-radius:999px;background:rgba(255,87,51,0.12);color:#FFB29F;font-size:12px;line-height:16px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">
+                      Growth Team Request
+                    </div>
+                    <h1 style="margin:0 0 18px 0;color:#ffffff;font-size:32px;line-height:38px;font-weight:800;letter-spacing:0;">
+                      Thanks for expressing an interest in joining the Icon Training Growth Team
+                    </h1>
+                    <p style="margin:0 0 26px 0;color:#b8b8b8;font-size:16px;line-height:26px;">
+                      Join the Discord server, attend onboarding, contribute, succeed.
+                    </p>
+                    ${ctaHtml}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:18px 4px 0 4px;color:#777777;font-size:12px;line-height:18px;text-align:center;">
+                    Icon Training
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
   `;
 
   return { text, html };

@@ -1,9 +1,10 @@
 const crypto = require("node:crypto");
+const nodemailer = require("nodemailer");
 
-const MAILERLITE_API_URL = "https://connect.mailerlite.com/api/subscribers";
 const HONEYPOT_FIELD = "companyWebsite";
 const RATE_LIMIT_MESSAGE = "Too many requests. Please try again later.";
 const HONEYPOT_MESSAGE = "Unable to submit. Please try again.";
+const DEFAULT_NOTIFY_EMAIL = "mish@icontraining.app";
 
 const rateLimitStore = new Map();
 
@@ -18,6 +19,15 @@ function json(res, statusCode, payload) {
 
 function hashValue(value) {
   return crypto.createHash("sha256").update(value).digest("hex");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function cleanupRateLimitStore(now) {
@@ -112,35 +122,97 @@ function parseBody(req) {
   });
 }
 
-async function submitToMailerLite({ email, groupId, fields }) {
-  const payload = {
-    email,
-    groups: [groupId],
-  };
+let cachedTransporter = null;
 
-  if (Object.keys(fields).length > 0) {
-    payload.fields = fields;
+function getTransporter() {
+  if (!cachedTransporter) {
+    cachedTransporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
   }
 
-  const response = await fetch(MAILERLITE_API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.MAIL_API_KEY}`,
-    },
-    body: JSON.stringify(payload),
-  });
+  return cachedTransporter;
+}
 
-  const data = await response.json().catch(() => null);
+function buildNotificationEmail({ firstName, lastName, email, role }) {
+  const fullName = `${firstName} ${lastName}`;
+  const text = [
+    "New Growth Team application",
+    "",
+    `Name:  ${fullName}`,
+    `Email: ${email}`,
+    `Role:  ${role}`,
+  ].join("\n");
 
-  if (!response.ok) {
-    return {
-      success: false,
-      message: data?.message || "Failed to submit application",
-    };
-  }
+  const html = `
+    <div style="font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.6">
+      <h2 style="margin:0 0 16px">New Growth Team application</h2>
+      <table style="border-collapse:collapse">
+        <tr><td style="padding:4px 16px 4px 0;color:#666">Name</td><td style="padding:4px 0"><strong>${escapeHtml(
+          fullName
+        )}</strong></td></tr>
+        <tr><td style="padding:4px 16px 4px 0;color:#666">Email</td><td style="padding:4px 0"><a href="mailto:${escapeHtml(
+          email
+        )}">${escapeHtml(email)}</a></td></tr>
+        <tr><td style="padding:4px 16px 4px 0;color:#666">Role</td><td style="padding:4px 0">${escapeHtml(
+          role
+        )}</td></tr>
+      </table>
+    </div>
+  `;
 
-  return { success: true };
+  return { text, html };
+}
+
+function buildWelcomeEmail({ firstName, inviteUrl }) {
+  const greetingName = firstName || "there";
+
+  const inviteText = inviteUrl
+    ? `Your next step is to join our Discord — that's where the team coordinates, shares resources, and where you'll get started on your first tasks.\n\nJoin here: ${inviteUrl}`
+    : "Your next step is to join our Discord — we'll send your invite link in a follow-up email shortly.";
+
+  const text = [
+    `Hi ${greetingName},`,
+    "",
+    "Thanks for applying to the Icon Training Growth Team! We're excited to have you on board.",
+    "",
+    inviteText,
+    "",
+    "See you inside,",
+    "The Icon Training Team",
+  ].join("\n");
+
+  const inviteHtml = inviteUrl
+    ? `
+      <p>Your next step is to join our Discord — that's where the team coordinates, shares resources, and where you'll get started on your first tasks.</p>
+      <p style="margin:28px 0">
+        <a href="${escapeHtml(inviteUrl)}"
+           style="display:inline-block;background:#FF5733;color:#fff;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:8px">
+          Join the Discord →
+        </a>
+      </p>
+      <p style="color:#666;font-size:13px">If the button doesn't work, copy this link into your browser:<br>
+        <a href="${escapeHtml(inviteUrl)}" style="color:#FF5733">${escapeHtml(inviteUrl)}</a>
+      </p>`
+    : `<p>Your next step is to join our Discord — we'll send your invite link in a follow-up email shortly.</p>`;
+
+  const html = `
+    <div style="font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.6;max-width:560px">
+      <h2 style="margin:0 0 16px">Welcome to the Icon Training Growth Team 🎉</h2>
+      <p>Hi ${escapeHtml(greetingName)},</p>
+      <p>Thanks for applying to the Icon Training Growth Team! We're excited to have you on board.</p>
+      ${inviteHtml}
+      <p style="margin-top:28px">See you inside,<br><strong>The Icon Training Team</strong></p>
+    </div>
+  `;
+
+  return { text, html };
 }
 
 module.exports = async function handler(req, res) {
@@ -150,18 +222,9 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  if (!process.env.MAIL_API_KEY) {
-    console.error("Missing MAIL_API_KEY");
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.error("Missing GMAIL_USER or GMAIL_APP_PASSWORD");
     json(res, 500, { success: false, message: "Internal server error" });
-    return;
-  }
-
-  const groupId =
-    process.env.MAIL_GROWTH_TEAM_GROUP_ID || process.env.MAIL_TRAINER_GROUP_ID;
-
-  if (!groupId) {
-    console.error("Missing MAIL_GROWTH_TEAM_GROUP_ID or MAIL_TRAINER_GROUP_ID");
-    json(res, 500, { success: false, message: "Configuration error" });
     return;
   }
 
@@ -221,29 +284,54 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const fields = {
-    name: `${firstName} ${lastName}`,
-  };
-  const roleFieldKey = process.env.MAIL_GROWTH_ROLE_FIELD_KEY;
+  const fromAddress = `Icon Training <${process.env.GMAIL_USER}>`;
+  const notifyEmail = process.env.NOTIFY_EMAIL || DEFAULT_NOTIFY_EMAIL;
+  const inviteUrl = (process.env.DISCORD_INVITE_URL || "").trim();
 
-  if (roleFieldKey) {
-    fields[roleFieldKey] = role;
+  if (!inviteUrl) {
+    console.warn("DISCORD_INVITE_URL is not set — applicant email will omit the invite link.");
   }
 
   try {
-    const submission = await submitToMailerLite({ email, groupId, fields });
+    const transporter = getTransporter();
 
-    if (!submission.success) {
-      json(res, 502, {
-        success: false,
-        message: submission.message || "Failed to submit application",
+    // Notify the team first so the lead is always captured.
+    const notification = buildNotificationEmail({
+      firstName,
+      lastName,
+      email,
+      role,
+    });
+
+    await transporter.sendMail({
+      from: fromAddress,
+      to: notifyEmail,
+      replyTo: email,
+      subject: `New Growth Team application — ${firstName} ${lastName} (${role})`,
+      text: notification.text,
+      html: notification.html,
+    });
+
+    // Send the applicant their welcome + Discord invite. Best-effort: a
+    // failure here shouldn't fail the submission the team already received.
+    try {
+      const welcome = buildWelcomeEmail({ firstName, inviteUrl });
+
+      await transporter.sendMail({
+        from: fromAddress,
+        to: email,
+        replyTo: notifyEmail,
+        subject: "Welcome to the Icon Training Growth Team",
+        text: welcome.text,
+        html: welcome.html,
       });
-      return;
+    } catch (welcomeError) {
+      console.error("Failed to send applicant welcome email:", welcomeError);
     }
 
     json(res, 200, {
       success: true,
-      message: "Application submitted successfully!",
+      message: "Application submitted! Check your email for your Discord invite.",
     });
   } catch (error) {
     console.error("Application submission error:", error);

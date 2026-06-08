@@ -5,5 +5,8 @@
   "scripts": {
     "dev": "vercel dev",
     "start": "vercel dev"
+  },
+  "dependencies": {
+    "nodemailer": "^8.0.10"
   }
 }

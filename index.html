@@ -400,12 +400,8 @@
 
       .hero-headline-row {
         display: flex;
-        align-items: stretch; /* Forces the logo container to exactly match the text height */
-        gap: clamp(
-          14px,
-          2.5vw,
-          36px
-        ); /* Dynamic spacing between logo and text */
+        align-items: center; /* Changed from stretch to center */
+        gap: clamp(14px, 2.5vw, 36px);
         margin-bottom: 30px;
         width: 100%;
       }
@@ -430,17 +426,14 @@
       h1 {
         margin-bottom: 0;
         color: #fff;
-        font-size: min(
-          3.8vw,
-          34px
-        ); /* Scales dynamically so it never overflows smaller screens */
+        font-size: min(3.8vw, 34px);
         font-weight: 700;
         font-style: italic;
         line-height: 1.22;
         letter-spacing: 0;
         text-transform: none;
         flex: 1 1 auto;
-        white-space: nowrap; /* Strictly prevents the text from naturally wrapping */
+        white-space: nowrap;
       }
 
       h1 .accent,
@@ -993,10 +986,10 @@
       .hero-symbol {
         position: relative;
         flex: 0 0 auto;
-        width: auto;
-        height: auto; /* Height is dictated entirely by the h1 via flex stretch */
-        aspect-ratio: 100 / 134; /* Maintains logo proportions perfectly based on your original dims */
-        margin: 0; /* Removed top margin so it sits perfectly flush with the text block */
+        /* 3 lines * 1.22 line-height = exactly 3.66 multiplier against the h1 font-size */
+        height: calc(min(3.8vw, 34px) * 3.66);
+        aspect-ratio: 100 / 134;
+        margin: 0;
       }
 
       .hero-symbol img {
@@ -1004,7 +997,7 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Prevents the logo from distorting as the container scales */
+        object-fit: contain;
         opacity: 0;
         animation: symfade 16s infinite;
       }

@@ -1892,9 +1892,19 @@
         }
 
         .ts-showcase {
-          width: min(100% - 28px, var(--max));
+          width: 100%;
           min-height: 430px;
           margin-top: 36px;
+        }
+
+        .ts-showcase::after {
+          background: linear-gradient(
+            90deg,
+            var(--bg) 0%,
+            transparent 4%,
+            transparent 96%,
+            var(--bg) 100%
+          );
         }
 
         .ts-track {
@@ -1902,6 +1912,7 @@
         }
         .ts-controls {
           top: 0;
+          right: 14px;
         }
 
         .ts-arrow {
@@ -1915,7 +1926,7 @@
 
         .ts-card {
           top: 52px;
-          width: min(360px, calc(100% - 16px));
+          width: min(310px, calc(100% - 64px));
           min-height: 318px;
           padding: 32px 28px 26px;
           border-radius: 20px;
@@ -1933,16 +1944,23 @@
           pointer-events: auto;
         }
         .ts-card.is-prev {
-          transform: translateX(calc(-50% - 290px)) scale(0.85);
+          transform: translateX(calc(-50% - 175px)) scale(0.85);
         }
         .ts-card.is-next {
-          transform: translateX(calc(-50% + 290px)) scale(0.85);
+          transform: translateX(calc(-50% + 175px)) scale(0.85);
         }
 
         .ts-card.is-far-prev,
         .ts-card.is-far-next {
           opacity: 0;
           pointer-events: none;
+        }
+
+        .ts-card.is-far-prev {
+          transform: translateX(calc(-50% - 300px)) scale(0.76);
+        }
+        .ts-card.is-far-next {
+          transform: translateX(calc(-50% + 300px)) scale(0.76);
         }
 
         .footer-inner,

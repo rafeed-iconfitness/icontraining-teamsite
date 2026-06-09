@@ -5,6 +5,9 @@
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "assets/**", "use": "@vercel/static" }
   ],
+  "rewrites": [
+    { "source": "/api/apply", "destination": "/api/apply.js" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

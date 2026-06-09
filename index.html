@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join the Icon Training Growth Team</title>
-  <meta name="description" content="Join the pre-launch growth operation behind Icon Training. Build skills, gain experience, and help create the future of fitness." />
+  <meta name="description" content="Join the pre-launch growth operation behind Icon Training. Build skills, gain experience, and help create the future of fitness.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -477,7 +477,7 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(0, 0, 0, .92), rgba(0, 0, 0, .68), rgba(0, 0, 0, .22)),
-        url("assets/versioned/cta/trainer-cta-v1.png") right center / cover no-repeat;
+        url("assets/versioned/cta/trainer-cta-v1.webp") right center / cover no-repeat;
       opacity: .78;
       filter: saturate(1.05);
     }
@@ -636,7 +636,7 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(0, 0, 0, .90), rgba(0, 0, 0, .68), rgba(0, 0, 0, .24)),
-        url("assets/versioned/cta/waitlist-cta-v1.png") 75% 45% / contain no-repeat;
+        url("assets/versioned/cta/waitlist-cta-v1.webp") 75% 45% / contain no-repeat;
       opacity: .78;
       filter: blur(1px);
     }
@@ -799,6 +799,14 @@
     }
 
     .hero-symbol img:first-child { opacity: 1; }
+    .hero-symbol img:nth-child(1) { animation-delay: 0s; }
+    .hero-symbol img:nth-child(2) { animation-delay: -2s; }
+    .hero-symbol img:nth-child(3) { animation-delay: -4s; }
+    .hero-symbol img:nth-child(4) { animation-delay: -6s; }
+    .hero-symbol img:nth-child(5) { animation-delay: -8s; }
+    .hero-symbol img:nth-child(6) { animation-delay: -10s; }
+    .hero-symbol img:nth-child(7) { animation-delay: -12s; }
+    .hero-symbol img:nth-child(8) { animation-delay: -14s; }
 
     @keyframes symfade {
       0%    { opacity: 0; }
@@ -921,6 +929,14 @@
 
     .lane:hover { border-color: color-mix(in srgb, var(--lane) 55%, transparent); }
 
+    .lane-blue { --lane: #00B3D9; }
+    .lane-yellow { --lane: #FFCC00; }
+    .lane-red { --lane: #FE383C; }
+    .lane-green { --lane: #64BC8A; }
+    .lane-grey { --lane: #6F9B9B; }
+    .lane-purple { --lane: #8B4B88; }
+    .lane-pink { --lane: #E67071; }
+
     .lane.active {
       flex-grow: 6;
       border-color: var(--lane);
@@ -938,12 +954,14 @@
     .lane-icon img { width: 100%; height: 100%; object-fit: contain; }
 
     .lane-content {
+      display: block;
       margin-top: auto;
       width: 320px;
       max-width: none;
     }
 
     .lane-title {
+      display: block;
       margin: 0;
       color: #fff;
       font-size: 30px;
@@ -961,6 +979,7 @@
     }
 
     .lane-desc {
+      display: block;
       margin: 16px 0 0;
       max-width: 380px;
       color: rgba(255, 255, 255, .82);
@@ -1167,6 +1186,11 @@
       font-weight: 800;
     }
 
+    .avatar-blue { background: #00B3D9; }
+    .avatar-purple { background: #8B4B88; }
+    .avatar-green { background: #64BC8A; }
+    .avatar-red { background: #FE383C; }
+
     .ts-avatar img {
       width: 100%;
       height: 100%;
@@ -1310,9 +1334,19 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+      }
+
+      .navbar::after,
       .cycle-text,
       .cycle-bg,
       .hero-symbol img { animation: none !important; }
+
       .hero-symbol img:first-child { opacity: 1; }
     }
 
@@ -1471,7 +1505,7 @@
       .apply-panel::before {
         background:
           linear-gradient(180deg, rgba(0, 0, 0, .88), rgba(0, 0, 0, .76)),
-          url("assets/versioned/cta/waitlist-cta-v1.png") center bottom / 130% auto no-repeat;
+          url("assets/versioned/cta/waitlist-cta-v1.webp") center bottom / 130% auto no-repeat;
       }
 
       .footer-inner,
@@ -1487,7 +1521,7 @@
   <nav class="navbar" aria-label="Primary navigation">
     <div class="nav-inner">
       <a href="#" class="logo" aria-label="Icon home">
-        <img src="assets/versioned/brand/icon-logo-v1.svg" alt="ICON" />
+        <img src="assets/versioned/brand/icon-logo-v1.svg" alt="ICON">
       </a>
       <ul class="desktop-links">
         <li><a href="#mission">Mission</a></li>
@@ -1521,14 +1555,14 @@
       <div class="hero-copy">
         <div class="hero-headline-row">
           <div class="hero-symbol" aria-hidden="true">
-            <img src="assets/versioned/home/icon-symbol-orange-v1.png" alt="" style="animation-delay: 0s">
-            <img src="assets/versioned/home/icon-symbol-grey-v1.png" alt="" style="animation-delay: -2s">
-            <img src="assets/versioned/home/icon-symbol-purple-v1.png" alt="" style="animation-delay: -4s">
-            <img src="assets/versioned/home/icon-symbol-green-v1.png" alt="" style="animation-delay: -6s">
-            <img src="assets/versioned/home/icon-symbol-blue-v1.png" alt="" style="animation-delay: -8s">
-            <img src="assets/versioned/home/icon-symbol-yellow-v1.png" alt="" style="animation-delay: -10s">
-            <img src="assets/versioned/home/icon-symbol-red-v1.png" alt="" style="animation-delay: -12s">
-            <img src="assets/versioned/home/icon-symbol-pink-v1.png" alt="" style="animation-delay: -14s">
+            <img src="assets/versioned/home/icon-symbol-orange-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-grey-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-purple-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-green-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-blue-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-yellow-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-red-v1.webp" alt="">
+            <img src="assets/versioned/home/icon-symbol-pink-v1.webp" alt="">
           </div>
           <h1>We're building the future of fitness, and you are part of it<br>
           Gain hands-on <span class="accent cycle-text">experience</span> and real industry <span class="accent cycle-text">exposure.</span><br>
@@ -1572,7 +1606,7 @@
             <p>An AI version of themselves: their coaching style, experience, tone and decision-making.</p>
           </div>
           <div class="mission-visual">
-            <img src="assets/versioned/features/trainers-create-icon-v1.png" alt="Trainers create an Icon — Icon Training app screens" />
+            <img src="assets/versioned/features/trainers-create-icon-v1.webp" alt="Trainers create an Icon — Icon Training app screens">
           </div>
         </div>
         <div class="mission-row reverse">
@@ -1582,7 +1616,7 @@
             <p>Personalised fitness guidance from people they already trust, available whenever they need it.</p>
           </div>
           <div class="mission-visual">
-            <img src="assets/versioned/features/users-subscribe-v1.png" alt="Users subscribe for coaching — Icon Training app screens" />
+            <img src="assets/versioned/features/users-subscribe-v1.webp" alt="Users subscribe for coaching — Icon Training app screens">
           </div>
         </div>
       </div>
@@ -1596,24 +1630,24 @@
         <h2 class="section-title">Bridging the gap between education and <span class="accent">real experience.</span></h2>
         <p class="section-lead">Most people are told they need experience before anyone will give them experience. The Growth Team exists to break that loop.</p>
       </div>
-      <div class="feature-list" aria-label="Growth team principles">
+      <section class="feature-list" aria-label="Growth team principles">
         <article class="acc active">
-          <button type="button">Get industry experience <span class="plus" aria-hidden="true">+</span></button>
-          <div class="acc-body"><div><p>Update your CV with real start-up experience - not a mock portfolio.</p></div></div>
+          <button type="button" aria-expanded="true" aria-controls="principle-experience">Get industry experience <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body" id="principle-experience"><div><p>Update your CV with real start-up experience - not a mock portfolio.</p></div></div>
         </article>
         <article class="acc">
-          <button type="button">Positive work reference <span class="plus" aria-hidden="true">+</span></button>
-          <div class="acc-body"><div><p>Give prospective employers the founders' email address - he will fight for you to get the job!</p></div></div>
+          <button type="button" aria-expanded="false" aria-controls="principle-reference">Positive work reference <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body" id="principle-reference"><div><p>Give prospective employers the founders' email address - he will fight for you to get the job!</p></div></div>
         </article>
         <article class="acc">
-          <button type="button">International team collaboration <span class="plus" aria-hidden="true">+</span></button>
-          <div class="acc-body"><div><p>We operate a massive network of young professionals - all supporting each other's success.</p></div></div>
+          <button type="button" aria-expanded="false" aria-controls="principle-collaboration">International team collaboration <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body" id="principle-collaboration"><div><p>We operate a massive network of young professionals - all supporting each other's success.</p></div></div>
         </article>
         <article class="acc">
-          <button type="button">Clear pathway to employment <span class="plus" aria-hidden="true">+</span></button>
-          <div class="acc-body"><div><p>We regularly support contributors with getting paid opportunities and clients - so you can earn.</p></div></div>
+          <button type="button" aria-expanded="false" aria-controls="principle-employment">Clear pathway to employment <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body" id="principle-employment"><div><p>We regularly support contributors with getting paid opportunities and clients - so you can earn.</p></div></div>
         </article>
-      </div>
+      </section>
     </div>
   </section>
 
@@ -1624,62 +1658,62 @@
         <h2 class="section-title">Help grow the brand from the <span class="accent">inside.</span></h2>
         <p class="section-lead">Join a role that matches your skills, interests and ambition. You can start focused, then grow into new areas as you prove yourself.</p>
       </div>
-      <div class="lanes" role="tablist" aria-label="Growth team roles">
-        <button class="lane active" type="button" aria-expanded="true" style="--lane: #00B3D9">
-          <span class="lane-icon"><img src="assets/versioned/roles/app-testing-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">App Testing</h3>
-            <p class="lane-desc">Test the app, report bugs, suggest improvements and help shape the product before public launch.</p>
+      <div class="lanes" role="group" aria-label="Growth team roles">
+        <button class="lane lane-blue active" type="button" aria-pressed="true">
+          <span class="lane-icon"><img src="assets/versioned/roles/app-testing-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">App Testing</span>
+            <span class="lane-desc">Test the app, report bugs, suggest improvements and help shape the product before public launch.</span>
             <span class="lane-tag">Product Influence</span>
-          </div>
+          </span>
         </button>
-        <button class="lane" type="button" aria-expanded="false" style="--lane: #FFCC00">
-          <span class="lane-icon"><img src="assets/versioned/roles/partnerships-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">Partnerships</h3>
-            <p class="lane-desc">Conduct outreach to athletes, trainers and fitness creators. Build conversations that create commercial opportunities.</p>
+        <button class="lane lane-yellow" type="button" aria-pressed="false">
+          <span class="lane-icon"><img src="assets/versioned/roles/partnerships-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">Partnerships</span>
+            <span class="lane-desc">Conduct outreach to athletes, trainers and fitness creators. Build conversations that create commercial opportunities.</span>
             <span class="lane-tag">Revenue Share</span>
-          </div>
+          </span>
         </button>
-        <button class="lane" type="button" aria-expanded="false" style="--lane: #FE383C">
-          <span class="lane-icon"><img src="assets/versioned/roles/content-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">Content</h3>
-            <p class="lane-desc">Create social content, visual assets, short-form edits and campaign ideas that sharpen the Icon Training brand.</p>
+        <button class="lane lane-red" type="button" aria-pressed="false">
+          <span class="lane-icon"><img src="assets/versioned/roles/content-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">Content</span>
+            <span class="lane-desc">Create social content, visual assets, short-form edits and campaign ideas that sharpen the Icon Training brand.</span>
             <span class="lane-tag">Portfolio Work</span>
-          </div>
+          </span>
         </button>
-        <button class="lane" type="button" aria-expanded="false" style="--lane: #64BC8A">
-          <span class="lane-icon"><img src="assets/versioned/roles/fundraising-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">Fundraising</h3>
-            <p class="lane-desc">Support research, investor preparation and strategic growth work for people ready for a higher-trust role.</p>
+        <button class="lane lane-green" type="button" aria-pressed="false">
+          <span class="lane-icon"><img src="assets/versioned/roles/fundraising-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">Fundraising</span>
+            <span class="lane-desc">Support research, investor preparation and strategic growth work for people ready for a higher-trust role.</span>
             <span class="lane-tag">Invite Only</span>
-          </div>
+          </span>
         </button>
-        <button class="lane" type="button" aria-expanded="false" style="--lane: #6F9B9B">
-          <span class="lane-icon"><img src="assets/versioned/roles/recruitment-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">Recruitment</h3>
-            <p class="lane-desc">Help identify, welcome and support new contributors as the Growth Team expands internationally.</p>
+        <button class="lane lane-grey" type="button" aria-pressed="false">
+          <span class="lane-icon"><img src="assets/versioned/roles/recruitment-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">Recruitment</span>
+            <span class="lane-desc">Help identify, welcome and support new contributors as the Growth Team expands internationally.</span>
             <span class="lane-tag">Business Growth</span>
-          </div>
+          </span>
         </button>
-        <button class="lane" type="button" aria-expanded="false" style="--lane: #8B4B88">
-          <span class="lane-icon"><img src="assets/versioned/roles/onboarding-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">Onboarding</h3>
-            <p class="lane-desc">Guide new contributors through the first steps, role selection, Discord structure and team expectations.</p>
+        <button class="lane lane-purple" type="button" aria-pressed="false">
+          <span class="lane-icon"><img src="assets/versioned/roles/onboarding-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">Onboarding</span>
+            <span class="lane-desc">Guide new contributors through the first steps, role selection, Discord structure and team expectations.</span>
             <span class="lane-tag">Community Support</span>
-          </div>
+          </span>
         </button>
-        <button class="lane" type="button" aria-expanded="false" style="--lane: #E67071">
-          <span class="lane-icon"><img src="assets/versioned/roles/workshops-v1.png" alt="" /></span>
-          <div class="lane-content">
-            <h3 class="lane-title">Workshops</h3>
-            <p class="lane-desc">Support educational sessions, contributor development and shared learning across the Growth Team.</p>
+        <button class="lane lane-pink" type="button" aria-pressed="false">
+          <span class="lane-icon"><img src="assets/versioned/roles/workshops-v1.webp" alt=""></span>
+          <span class="lane-content">
+            <span class="lane-title">Workshops</span>
+            <span class="lane-desc">Support educational sessions, contributor development and shared learning across the Growth Team.</span>
             <span class="lane-tag">Skill Development</span>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1711,7 +1745,7 @@
         <p class="section-lead">Growth Team contributors are building, learning, improving and creating career momentum. We have helped multiple contributors to get paid clients through positive referrals and support.</p>
       </div>
     </div>
-      <div class="ts-showcase" aria-label="Contributor testimonials" aria-roledescription="carousel">
+      <section class="ts-showcase" aria-label="Contributor testimonials" aria-roledescription="carousel">
         <div class="ts-controls">
           <button class="ts-arrow" type="button" data-ts-prev aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
           <button class="ts-arrow" type="button" data-ts-next aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -1720,55 +1754,55 @@
           <article class="ts-card c-orange">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>The skills, confidence, and <mark>experience</mark> I gained helped me secure a full-time paid Social Media Internship.</p>
-            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/divya-v1.jpg" alt="Divya" /></span><span><strong class="ts-name">Divya</strong><span class="ts-outcome">Paid internship</span></span></div>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/divya-v1.jpg" alt="Divya"></span><span><strong class="ts-name">Divya</strong><span class="ts-outcome">Paid internship</span></span></div>
           </article>
           <article class="ts-card c-grey">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>From the very beginning, I felt extremely <mark>welcomed</mark>. The support system was excellent, and no one was left behind.</p>
-            <div class="ts-person"><span class="ts-avatar" style="background: #00B3D9" aria-hidden="true">R</span><span><strong class="ts-name">Rex</strong><span class="ts-outcome">Day-one support</span></span></div>
+            <div class="ts-person"><span class="ts-avatar avatar-blue" aria-hidden="true">R</span><span><strong class="ts-name">Rex</strong><span class="ts-outcome">Day-one support</span></span></div>
           </article>
           <article class="ts-card c-purple">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>What started as a placement opportunity became something much more <mark>meaningful</mark>. I moved fully into Icon Training to gain more exposure and understand how a start-up grows.</p>
-            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/muskan-v1.jpg" alt="Muskan" /></span><span><strong class="ts-name">Muskan</strong><span class="ts-outcome">Start-up exposure</span></span></div>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/muskan-v1.jpg" alt="Muskan"></span><span><strong class="ts-name">Muskan</strong><span class="ts-outcome">Start-up exposure</span></span></div>
           </article>
           <article class="ts-card c-green">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>ICON pushed me out of ordinary, templated work and forced me to elevate my <mark>standards</mark>. My work here carries real-world weight.</p>
-            <div class="ts-person"><span class="ts-avatar" style="background: #8B4B88" aria-hidden="true">KE</span><span><strong class="ts-name">Kenechukwu Emmanuel</strong><span class="ts-outcome">Raised standards</span></span></div>
+            <div class="ts-person"><span class="ts-avatar avatar-purple" aria-hidden="true">KE</span><span><strong class="ts-name">Kenechukwu Emmanuel</strong><span class="ts-outcome">Raised standards</span></span></div>
           </article>
           <article class="ts-card c-blue">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>I secured five international <mark>partnerships</mark> through targeted outreach, strengthening my skills in partnerships, strategy, and relationship management.</p>
-            <div class="ts-person"><span class="ts-avatar" style="background: #64BC8A" aria-hidden="true">SA</span><span><strong class="ts-name">Sayed Abdullah</strong><span class="ts-outcome">5 partnerships closed</span></span></div>
+            <div class="ts-person"><span class="ts-avatar avatar-green" aria-hidden="true">SA</span><span><strong class="ts-name">Sayed Abdullah</strong><span class="ts-outcome">5 partnerships closed</span></span></div>
           </article>
           <article class="ts-card c-yellow">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>I joined to build my CV, but ended up building my entire LinkedIn presence and shaping the beginning of my <mark>career</mark> path.</p>
-            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/abeeda-v1.jpg" alt="Abeeda" /></span><span><strong class="ts-name">Abeeda</strong><span class="ts-outcome">Career path shaped</span></span></div>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/abeeda-v1.jpg" alt="Abeeda"></span><span><strong class="ts-name">Abeeda</strong><span class="ts-outcome">Career path shaped</span></span></div>
           </article>
           <article class="ts-card c-red">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>The feedback challenged how I thought about my <mark>craft</mark> and raised my standards in ways I hadn't expected.</p>
-            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/kelvin-v1.jpg" alt="Kelvin" /></span><span><strong class="ts-name">Kelvin</strong><span class="ts-outcome">Creative growth</span></span></div>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/kelvin-v1.jpg" alt="Kelvin"></span><span><strong class="ts-name">Kelvin</strong><span class="ts-outcome">Creative growth</span></span></div>
           </article>
           <article class="ts-card c-pink">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>I went from reading about digital trends to actually <mark>living</mark> them, building bridges between global fitness legends and cutting-edge AI.</p>
-            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/viktoriia-v1.jpg" alt="Viktoriia Z." /></span><span><strong class="ts-name">Viktoriia Z.</strong><span class="ts-outcome">Hands-on impact</span></span></div>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/viktoriia-v1.jpg" alt="Viktoriia Z."></span><span><strong class="ts-name">Viktoriia Z.</strong><span class="ts-outcome">Hands-on impact</span></span></div>
           </article>
           <article class="ts-card c-orange">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>I joined to do design work for my portfolio, but ended up building confidence, gaining <mark>clients</mark>, and developing new skills.</p>
-            <div class="ts-person"><span class="ts-avatar" style="background: #FE383C" aria-hidden="true">N</span><span><strong class="ts-name">Neira</strong><span class="ts-outcome">New clients gained</span></span></div>
+            <div class="ts-person"><span class="ts-avatar avatar-red" aria-hidden="true">N</span><span><strong class="ts-name">Neira</strong><span class="ts-outcome">New clients gained</span></span></div>
           </article>
           <article class="ts-card c-grey">
             <div class="ts-quote" aria-hidden="true">&ldquo;</div>
             <p>Joining this Discord community turned out to be one of the best <mark>decisions</mark> for my career growth.</p>
-            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/jonah-v1.jpg" alt="Jonah" /></span><span><strong class="ts-name">Jonah</strong><span class="ts-outcome">Career growth</span></span></div>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/jonah-v1.jpg" alt="Jonah"></span><span><strong class="ts-name">Jonah</strong><span class="ts-outcome">Career growth</span></span></div>
           </article>
         </div>
-      </div>
+      </section>
   </section>
 
   <section class="section">
@@ -1846,7 +1880,7 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div class="footer-brand">
-        <a href="#" aria-label="Icon home"><img src="assets/versioned/brand/icon-logo-v1.svg" alt="ICON" /></a>
+        <a href="#" aria-label="Icon home"><img src="assets/versioned/brand/icon-logo-v1.svg" alt="ICON"></a>
         <span>© 2026 ICON. All rights reserved.</span>
       </div>
       <div class="footer-links">
@@ -1882,10 +1916,15 @@
     document.querySelectorAll(".acc button").forEach((button) => {
       button.addEventListener("click", () => {
         const item = button.closest(".acc");
+        const willOpen = !item.classList.contains("active");
         document.querySelectorAll(".acc").forEach((acc) => {
-          if (acc !== item) acc.classList.remove("active");
+          if (acc !== item) {
+            acc.classList.remove("active");
+            acc.querySelector("button")?.setAttribute("aria-expanded", "false");
+          }
         });
-        item.classList.toggle("active");
+        item.classList.toggle("active", willOpen);
+        button.setAttribute("aria-expanded", String(willOpen));
       });
     });
 
@@ -1897,7 +1936,7 @@
 
       window.scrollTo({
         top: Math.max(maxScrollTop, 0),
-        behavior: "smooth",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       });
     };
 
@@ -1928,7 +1967,7 @@
         document.querySelectorAll(".lane").forEach((other) => {
           const isActive = other === lane;
           other.classList.toggle("active", isActive);
-          other.setAttribute("aria-expanded", String(isActive));
+          other.setAttribute("aria-pressed", String(isActive));
         });
       });
     });

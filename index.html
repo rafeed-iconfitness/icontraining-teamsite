@@ -1212,9 +1212,9 @@
           ),
           color-mix(in srgb, var(--lane) 16%, #050505);
         transition:
-          flex-grow 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-          border-color 0.4s ease,
-          background-color 0.4s ease;
+          flex-grow 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          border-color 0.45s ease,
+          background-color 0.45s ease;
       }
 
       .lane:hover {
@@ -1284,7 +1284,8 @@
   white-space: nowrap;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  text-align: left; /* Change this from right to left */
+  text-align: left;
+  transition: opacity 0.2s ease;
 }
 
       .lane.active .lane-title {
@@ -1301,15 +1302,17 @@
         font-size: 18px;
         line-height: 1.42;
         opacity: 0;
-        height: 0;
+        max-height: 0;
         overflow: hidden;
         margin: 0;
-        transition: opacity 0.35s ease;
+        transition:
+          opacity 0.4s ease,
+          max-height 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          margin 0.55s ease;
       }
 
       .lane-tag {
         display: inline-flex;
-        padding: 7px 12px;
         border-radius: 999px;
         border: 1px solid color-mix(in srgb, var(--lane) 55%, transparent);
         background: color-mix(in srgb, var(--lane) 18%, transparent);
@@ -1320,26 +1323,30 @@
         text-transform: uppercase;
         letter-spacing: 0.1em;
         opacity: 0;
-        height: 0;
+        max-height: 0;
         overflow: hidden;
         margin: 0;
         padding: 0;
-        transition: opacity 0.35s ease;
+        transition:
+          opacity 0.4s ease,
+          max-height 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          margin 0.55s ease,
+          padding 0.55s ease;
       }
 
       .lane.active .lane-desc {
         opacity: 1;
-        height: auto;
+        max-height: 200px;
         margin: 16px 0 0;
-        transition-delay: 0.15s;
+        transition-delay: 0.18s;
       }
 
       .lane.active .lane-tag {
         opacity: 1;
-        height: auto;
+        max-height: 60px;
         margin-top: 22px;
         padding: 7px 12px;
-        transition-delay: 0.15s;
+        transition-delay: 0.22s;
       }
 
       /* ===== Contributor stories — rotating card stack ===== */
@@ -1845,13 +1852,17 @@
 
         .lane-desc,
         .lane-tag {
-          display: none;
+          transition:
+            opacity 0.35s ease,
+            max-height 0.45s ease,
+            margin 0.45s ease,
+            padding 0.45s ease;
         }
         .lane.active .lane-desc {
-          display: block;
+          transition-delay: 0.2s;
         }
         .lane.active .lane-tag {
-          display: inline-flex;
+          transition-delay: 0.25s;
         }
 
         .ts-card.is-prev {
@@ -3138,10 +3149,17 @@
 
       document.querySelectorAll(".lane").forEach((lane) => {
         lane.addEventListener("click", () => {
-          document.querySelectorAll(".lane").forEach((other) => {
-            const isActive = other === lane;
-            other.classList.toggle("active", isActive);
-            other.setAttribute("aria-pressed", String(isActive));
+          const titles = document.querySelectorAll(".lane-title");
+          titles.forEach((t) => (t.style.opacity = "0"));
+          requestAnimationFrame(() => {
+            document.querySelectorAll(".lane").forEach((other) => {
+              const isActive = other === lane;
+              other.classList.toggle("active", isActive);
+              other.setAttribute("aria-pressed", String(isActive));
+            });
+            requestAnimationFrame(() => {
+              titles.forEach((t) => (t.style.opacity = ""));
+            });
           });
         });
       });

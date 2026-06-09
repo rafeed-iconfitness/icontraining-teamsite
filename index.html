@@ -430,13 +430,17 @@
       h1 {
         margin-bottom: 0;
         color: #fff;
-        font-size: clamp(20px, 4.5vw, 34px);
+        font-size: min(
+          3.8vw,
+          34px
+        ); /* Scales dynamically so it never overflows smaller screens */
         font-weight: 700;
         font-style: italic;
         line-height: 1.22;
         letter-spacing: 0;
         text-transform: none;
         flex: 1 1 auto;
+        white-space: nowrap; /* Strictly prevents the text from naturally wrapping */
       }
 
       h1 .accent,
@@ -989,9 +993,10 @@
       .hero-symbol {
         position: relative;
         flex: 0 0 auto;
-        width: clamp(48px, 10vw, 100px);
-        height: clamp(64px, 13vw, 134px);
-        margin: 2px 0 0;
+        width: auto;
+        height: auto; /* Height is dictated entirely by the h1 via flex stretch */
+        aspect-ratio: 100 / 134; /* Maintains logo proportions perfectly based on your original dims */
+        margin: 0; /* Removed top margin so it sits perfectly flush with the text block */
       }
 
       .hero-symbol img {
@@ -999,11 +1004,12 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: contain; /* Prevents the logo from distorting as the container scales */
         opacity: 0;
         animation: symfade 16s infinite;
       }
 
+      /* Ensure the first image remains visible initially (keep your existing animation logic here) */
       .hero-symbol img:first-child {
         opacity: 1;
       }

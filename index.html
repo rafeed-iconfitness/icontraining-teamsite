@@ -1086,6 +1086,11 @@
         background-color: #000;
       }
 
+      .cycle-bg > span[aria-hidden="true"]::before {
+        animation: brandcycle-bg 16s infinite;
+        background-color: unset;
+      }
+
       .hero .note {
         text-align: left;
         margin-top: 4px;

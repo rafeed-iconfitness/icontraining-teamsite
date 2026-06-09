@@ -1,9 +1,6 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/api/apply",
-      "destination": "/api/apply.js"
-    }
-  ]
+  "builds": [
+  { "src": "api/apply.js", "use": "@vercel/node" }
+]
 }

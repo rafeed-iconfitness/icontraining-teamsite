@@ -1754,17 +1754,25 @@
           min-width: 0;
           padding: 20px;
           max-height: 85px;
+          flex-direction: row; /* Places icon and title on the same line */
+          align-items: center; /* Centers them vertically when closed */
+          gap: 18px; /* Adds spacing between the icon and text */
           transition:
             max-height 0.4s ease,
             border-color 0.4s ease,
             background-color 0.4s ease;
         }
+
         .lane.active {
           flex-grow: 0;
           max-height: 350px;
+          align-items: flex-start; /* Keeps the icon pinned to the top when expanded */
         }
+
         .lane-content {
           width: auto;
+          margin-top: 0; /* Resets the desktop 'margin-top: auto' */
+          justify-content: center; /* Centers the text cluster vertically */
         }
 
         .lane-title {

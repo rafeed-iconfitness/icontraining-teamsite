@@ -2,10 +2,6 @@
   "name": "icontraining-teamsite",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
-  },
   "dependencies": {
     "nodemailer": "^8.0.10"
   }

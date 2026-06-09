@@ -7,7 +7,7 @@
   <meta name="description" content="Join the pre-launch growth operation behind Icon Training. Build skills, gain experience, and help create the future of fitness." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000;
@@ -16,8 +16,16 @@
       --panel-strong: rgba(255, 255, 255, .08);
       --border: rgba(255, 255, 255, .10);
       --border-strong: rgba(255, 255, 255, .18);
-      --accent: #FF5733;
+      --accent: #E9522B;
       --accent-dark: #b14527;
+      --c-orange: #E9522B;
+      --c-grey: #6F9B9B;
+      --c-purple: #8B4B88;
+      --c-green: #64BC8A;
+      --c-blue: #00B3D9;
+      --c-yellow: #FFCC00;
+      --c-red: #FE383C;
+      --c-pink: #E67071;
       --text: #fff;
       --muted: rgba(255, 255, 255, .68);
       --faint: rgba(255, 255, 255, .48);
@@ -150,9 +158,9 @@
     }
 
     .btn {
-      --button-bg: var(--accent-dark);
-      --button-bg-hover: #93361d;
-      --button-icon-color: var(--accent-dark);
+      --button-bg: var(--accent);
+      --button-bg-hover: #c43d18;
+      --button-icon-color: var(--accent);
       position: relative;
       display: inline-flex;
       min-height: 40px;
@@ -167,14 +175,14 @@
       font-weight: 700;
       line-height: 1;
       background: var(--button-bg);
-      box-shadow: 0 0 15px rgba(177, 69, 39, .30);
+      box-shadow: 0 0 15px rgba(233, 82, 43, .30);
       transition: background-color .3s ease, box-shadow .3s ease, transform .3s ease;
       white-space: nowrap;
     }
 
     .btn:hover {
       background: var(--button-bg-hover);
-      box-shadow: 0 0 25px rgba(177, 69, 39, .50);
+      box-shadow: 0 0 25px rgba(233, 82, 43, .50);
     }
 
     .btn-pill {
@@ -183,26 +191,12 @@
       padding: 0 32px;
       font-size: 20px;
       font-weight: 700;
-      box-shadow: 0 0 20px rgba(177, 69, 39, .40);
+      box-shadow: 0 0 20px rgba(233, 82, 43, .40);
     }
 
     .btn-pill:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(177, 69, 39, .60);
-    }
-
-    .btn-ghost {
-      --button-bg: transparent;
-      --button-bg-hover: rgba(255, 255, 255, .10);
-      --button-icon-color: #fff;
-      border: 1px solid rgba(255, 255, 255, .20);
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .btn-ghost:hover {
-      box-shadow: none;
-      transform: none;
+      box-shadow: 0 0 30px rgba(233, 82, 43, .60);
     }
 
     .btn > span[aria-hidden="true"] {
@@ -217,10 +211,6 @@
       background: #fff;
       color: transparent;
       line-height: 1;
-    }
-
-    .btn-ghost > span[aria-hidden="true"] {
-      background: rgba(255, 255, 255, .10);
     }
 
     .btn > span[aria-hidden="true"]::before,
@@ -312,38 +302,13 @@
 
     .hero {
       position: relative;
-      min-height: 720px;
+      min-height: 560px;
       overflow: hidden;
       display: flex;
       align-items: center;
       background:
-        radial-gradient(circle at 74% 42%, rgba(255, 87, 51, .20), transparent 30%),
-        linear-gradient(180deg, #030303 0%, #000 76%);
-    }
-
-    .hero-media {
-      position: absolute;
-      inset: 0 0 0 42%;
-      z-index: 0;
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: left bottom;
-      opacity: .86;
-      filter: saturate(1.05);
-    }
-
-    .hero-media::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(90deg, #000 0%, rgba(0, 0, 0, .74) 18%, rgba(0, 0, 0, .18) 50%, rgba(0, 0, 0, 0) 100%),
-        linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0) 34%);
+        radial-gradient(circle at 12% 30%, rgba(233, 82, 43, .14), transparent 44%),
+        linear-gradient(180deg, #050505 0%, #000 70%);
     }
 
     .hero-content {
@@ -355,10 +320,16 @@
     }
 
     .hero-copy {
-      max-width: 780px;
+      max-width: 1120px;
     }
 
-    .eyebrow,
+    .hero-headline-row {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(18px, 2.6vw, 36px);
+      margin-bottom: 30px;
+    }
+
     .label {
       display: block;
       color: var(--accent);
@@ -369,38 +340,17 @@
       letter-spacing: .22em;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-      letter-spacing: .12em;
-    }
-
-    .pulse {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 8px rgba(255, 87, 51, .12);
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(.72); opacity: .62; }
-    }
-
     h1, h2, h3, p { margin-top: 0; }
 
     h1 {
-      margin-bottom: 28px;
+      margin-bottom: 0;
       color: #fff;
-      font-size: clamp(64px, 8.2vw, 112px);
-      font-weight: 900;
-      line-height: .86;
+      font-size: clamp(26px, 2.7vw, 34px);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.22;
       letter-spacing: 0;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     h1 .accent,
@@ -410,18 +360,11 @@
     }
 
     .hero p {
-      max-width: 650px;
-      margin-bottom: 34px;
-      color: rgba(255, 255, 255, .80);
-      font-size: 24px;
-      line-height: 1.35;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
+      max-width: 680px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.5;
     }
 
     .stats {
@@ -469,7 +412,7 @@
 
     .section-soft {
       background:
-        radial-gradient(circle at 50% 40%, rgba(255, 87, 51, .10), transparent 32%),
+        radial-gradient(circle at 50% 40%, rgba(233, 82, 43, .10), transparent 32%),
         #000;
     }
 
@@ -494,144 +437,25 @@
       line-height: 1.38;
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
-      gap: 72px;
-      align-items: center;
-    }
-
-    .steps {
-      display: grid;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: 46px 1fr;
-      gap: 18px;
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--panel);
-      transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
-    }
-
-    .step:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 87, 51, .40);
-      background: rgba(255, 255, 255, .07);
-    }
-
-    .step-num,
-    .card-kicker {
+    .step-num {
       display: inline-grid;
       place-items: center;
       width: 46px;
       height: 46px;
       border-radius: 999px;
-      background: rgba(255, 87, 51, .13);
-      border: 1px solid rgba(255, 87, 51, .36);
+      background: rgba(233, 82, 43, .13);
+      border: 1px solid rgba(233, 82, 43, .36);
       color: var(--accent);
       font-size: 18px;
       font-weight: 900;
     }
 
-    .step h3 {
-      margin-bottom: 8px;
-      font-size: 26px;
-      line-height: 1;
-    }
-
-    .step p,
     .card p,
-    .testimonial-card p,
     .process-card p {
       margin-bottom: 0;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.42;
-    }
-
-    .phone-wrap {
-      position: relative;
-      isolation: isolate;
-      margin-inline: auto;
-      width: min(100%, 360px);
-    }
-
-    .phone-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 16% -18%;
-      z-index: -1;
-      border-radius: 999px;
-      background: rgba(255, 87, 51, .20);
-      filter: blur(90px);
-    }
-
-    .phone-shell {
-      position: relative;
-      aspect-ratio: 549 / 1030;
-    }
-
-    .phone-screen {
-      position: absolute;
-      left: 11.66%;
-      right: 11.48%;
-      top: 11.46%;
-      bottom: 5.34%;
-      overflow: hidden;
-      border-radius: 0 0 40px 40px;
-      background: #000;
-    }
-
-    .phone-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .phone-frame {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      pointer-events: none;
-    }
-
-    .floating-chip {
-      position: absolute;
-      z-index: 4;
-      right: -14px;
-      bottom: 18%;
-      max-width: 190px;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(14, 19, 21, .78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 18px 55px rgba(0, 0, 0, .35);
-    }
-
-    .floating-chip strong {
-      display: block;
-      color: #fff;
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .floating-chip span {
-      display: block;
-      margin-top: 6px;
-      color: var(--faint);
-      font-size: 14px;
-      line-height: 1.25;
     }
 
     .feature-panel {
@@ -694,32 +518,38 @@
       text-align: left;
     }
 
+    .acc-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .38s ease;
+    }
+
+    .acc-body > div { overflow: hidden; }
+
     .acc p {
-      display: none;
-      margin: -4px 20px 20px;
+      margin: 0;
+      padding: 0 20px 18px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.4;
     }
 
     .acc.active {
-      border-color: rgba(255, 87, 51, .42);
-      background: rgba(255, 87, 51, .12);
+      border-color: rgba(233, 82, 43, .42);
+      background: rgba(233, 82, 43, .12);
     }
 
-    .acc.active p { display: block; }
+    .acc.active .acc-body { grid-template-rows: 1fr; }
     .acc.active .plus { transform: rotate(45deg); color: var(--accent); }
     .plus { transition: transform .2s ease; }
 
-    .card-grid,
     .gain-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .card,
-    .testimonial-card {
+    .card {
       position: relative;
       overflow: hidden;
       min-height: 250px;
@@ -730,8 +560,7 @@
       transition: transform .2s ease, border-color .2s ease, background-color .2s ease;
     }
 
-    .card::after,
-    .testimonial-card::after {
+    .card::after {
       content: "";
       position: absolute;
       inset: auto 0 0;
@@ -742,21 +571,12 @@
       transition: transform .25s ease;
     }
 
-    .card:hover,
-    .testimonial-card:hover {
+    .card:hover {
       transform: translateY(-4px);
-      border-color: rgba(255, 87, 51, .42);
+      border-color: rgba(233, 82, 43, .42);
     }
 
-    .card:hover::after,
-    .testimonial-card:hover::after { transform: scaleX(1); }
-
-    .card-kicker {
-      margin-bottom: 22px;
-      width: 42px;
-      height: 42px;
-      font-size: 15px;
-    }
+    .card:hover::after { transform: scaleX(1); }
 
     .card h3 {
       margin-bottom: 14px;
@@ -766,88 +586,14 @@
       text-transform: uppercase;
     }
 
-    .tag {
-      display: inline-flex;
-      margin-top: 24px;
-      border: 1px solid rgba(255, 87, 51, .34);
-      border-radius: 999px;
-      padding: 7px 11px;
-      color: var(--accent);
-      background: rgba(255, 87, 51, .08);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: .10em;
-    }
-
     .card .num {
       position: absolute;
       right: 22px;
       top: 18px;
-      color: rgba(255, 87, 51, .18);
+      color: rgba(233, 82, 43, .18);
       font-size: 70px;
       font-weight: 900;
       line-height: .8;
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .9fr .9fr;
-      gap: 16px;
-    }
-
-    .testimonial-card.featured {
-      grid-row: span 2;
-      min-height: 430px;
-    }
-
-    .quote-mark {
-      height: 52px;
-      color: var(--accent);
-      font-size: 92px;
-      font-weight: 900;
-      line-height: .72;
-    }
-
-    .testimonial-card.featured p {
-      color: rgba(255, 255, 255, .78);
-      font-size: 24px;
-      line-height: 1.35;
-    }
-
-    .person {
-      margin-top: 28px;
-    }
-
-    .person strong {
-      display: block;
-      color: #fff;
-      font-size: 21px;
-      line-height: 1;
-    }
-
-    .outcome {
-      display: block;
-      margin-top: 8px;
-      color: var(--accent);
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-
-    .reaction {
-      display: inline-flex;
-      gap: 12px;
-      margin-top: 24px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 8px 11px;
-      background: rgba(255, 255, 255, .07);
-      color: rgba(255, 255, 255, .78);
-      font-size: 16px;
-      font-weight: 700;
     }
 
     .process {
@@ -938,15 +684,15 @@
 
     input:focus,
     select:focus {
-      border-color: rgba(255, 87, 51, .62);
-      box-shadow: 0 0 0 4px rgba(255, 87, 51, .12);
+      border-color: rgba(233, 82, 43, .62);
+      box-shadow: 0 0 0 4px rgba(233, 82, 43, .12);
     }
 
     .submit {
       width: 100%;
       margin-top: 8px;
       border-radius: 999px;
-      background: var(--accent-dark);
+      background: var(--accent);
     }
 
     .submit::before { display: none; }
@@ -1005,6 +751,571 @@
 
     .footer-links a:hover { color: var(--accent); }
 
+    /* ===== Brand colour-cycle animation ===== */
+    @keyframes brandcycle {
+      0%    { color: var(--c-orange); }
+      12.5% { color: var(--c-grey); }
+      25%   { color: var(--c-purple); }
+      37.5% { color: var(--c-green); }
+      50%   { color: var(--c-blue); }
+      62.5% { color: var(--c-yellow); }
+      75%   { color: var(--c-red); }
+      87.5% { color: var(--c-pink); }
+      100%  { color: var(--c-orange); }
+    }
+
+    @keyframes brandcycle-bg {
+      0%    { background-color: var(--c-orange); }
+      12.5% { background-color: var(--c-grey); }
+      25%   { background-color: var(--c-purple); }
+      37.5% { background-color: var(--c-green); }
+      50%   { background-color: var(--c-blue); }
+      62.5% { background-color: var(--c-yellow); }
+      75%   { background-color: var(--c-red); }
+      87.5% { background-color: var(--c-pink); }
+      100%  { background-color: var(--c-orange); }
+    }
+
+    .cycle-text { animation: brandcycle 16s linear infinite; }
+    .cycle-bg { animation: brandcycle-bg 16s linear infinite; }
+
+    /* ===== Hero colour-cycling icon symbol ===== */
+    .hero-symbol {
+      position: relative;
+      flex: 0 0 auto;
+      width: clamp(60px, 7.5vw, 100px);
+      height: clamp(80px, 10vw, 134px);
+      margin: 2px 0 0;
+    }
+
+    .hero-symbol img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      animation: symfade 16s linear infinite;
+    }
+
+    .hero-symbol img:first-child { opacity: 1; }
+
+    @keyframes symfade {
+      0%    { opacity: 0; }
+      3%    { opacity: 1; }
+      12.5% { opacity: 1; }
+      15.5% { opacity: 0; }
+      100%  { opacity: 0; }
+    }
+
+    /* ===== Hero inline signup form ===== */
+    .hero-form {
+      display: flex;
+      gap: 12px;
+      max-width: 520px;
+      margin-top: 8px;
+    }
+
+    .hero-form input[type="email"] {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .hero-form .submit {
+      width: auto;
+      flex: 0 0 auto;
+      margin-top: 0;
+      white-space: nowrap;
+    }
+
+    /* CTA hover: white background, black text.
+       Override the cycle with !important (beats running animations in the
+       cascade) instead of `animation: none`, so the colour-cycle keeps
+       ticking underneath and stays in sync with the headline text. */
+    .cta-invert:hover {
+      background: #fff !important;
+      color: #000;
+      box-shadow: 0 0 28px rgba(255, 255, 255, .35);
+    }
+
+    .cta-invert:hover > span[aria-hidden="true"]::before { color: #000; }
+
+    .hero .note { text-align: left; margin-top: 4px; }
+
+    /* ===== Mission: two alternating 50:50 rows ===== */
+    .mission { display: grid; gap: 72px; }
+
+    .mission-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .mission-row.reverse .mission-visual { order: -1; }
+
+    .mission-visual {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .mission-visual::before {
+      content: "";
+      position: absolute;
+      inset: 12% 6%;
+      z-index: -1;
+      border-radius: 999px;
+      background: rgba(233, 82, 43, .18);
+      filter: blur(80px);
+    }
+
+    .mission-visual img {
+      width: 100%;
+      height: auto;
+    }
+
+    .mission-row .step-num {
+      margin-bottom: 22px;
+    }
+
+    .mission-row h3 {
+      margin-bottom: 14px;
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 900;
+      line-height: .98;
+      text-transform: uppercase;
+    }
+
+    .mission-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    /* ===== Choose your lane: click-to-expand columns ===== */
+    .lanes {
+      display: flex;
+      gap: 12px;
+      height: 480px;
+      margin-top: 36px;
+    }
+
+    .lane {
+      position: relative;
+      flex: 1 1 0%;
+      min-width: 68px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      text-align: left;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .25)),
+        color-mix(in srgb, var(--lane) 16%, #050505);
+      transition: flex-grow .55s cubic-bezier(.4, 0, .2, 1), border-color .4s ease, background-color .4s ease;
+    }
+
+    .lane:hover { border-color: color-mix(in srgb, var(--lane) 55%, transparent); }
+
+    .lane.active {
+      flex-grow: 6;
+      border-color: var(--lane);
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .10), rgba(0, 0, 0, .55)),
+        color-mix(in srgb, var(--lane) 28%, #050505);
+    }
+
+    .lane-icon {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+    }
+
+    .lane-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+    .lane-content {
+      margin-top: auto;
+      width: 320px;
+      max-width: none;
+    }
+
+    .lane-title {
+      margin: 0;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 900;
+      line-height: .95;
+      text-transform: uppercase;
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .lane.active .lane-title {
+      writing-mode: horizontal-tb;
+      transform: none;
+    }
+
+    .lane-desc {
+      margin: 16px 0 0;
+      max-width: 380px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 18px;
+      line-height: 1.42;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .lane-tag {
+      display: inline-flex;
+      margin-top: 22px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--lane) 55%, transparent);
+      background: color-mix(in srgb, var(--lane) 18%, transparent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .lane.active .lane-desc,
+    .lane.active .lane-tag {
+      opacity: 1;
+      transition-delay: .15s;
+    }
+
+    /* ===== Contributor stories — rotating card stack ===== */
+    .ts-showcase {
+      position: relative;
+      width: min(var(--max), calc(100% - 64px));
+      margin: 48px auto 0;
+      min-height: 470px;
+    }
+
+    .ts-showcase::before {
+      content: "";
+      position: absolute;
+      inset: 40px 0 30px;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 46%, rgba(255, 255, 255, .055), transparent 62%);
+    }
+
+    .ts-controls {
+      position: absolute;
+      top: -4px;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      gap: 14px;
+    }
+
+    .ts-arrow {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .06);
+      color: #fff;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .45);
+      transition: transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+
+    .ts-arrow:hover {
+      transform: translateY(-2px);
+      border-color: rgba(233, 82, 43, .6);
+      background: rgba(233, 82, 43, .18);
+    }
+
+    .ts-arrow svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .ts-track {
+      position: relative;
+      min-height: 470px;
+      overflow: hidden;
+    }
+
+    .ts-card {
+      position: absolute;
+      top: 58px;
+      left: 50%;
+      display: flex;
+      flex-direction: column;
+      width: min(460px, calc(100% - 36px));
+      min-height: 336px;
+      padding: 40px 40px 32px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025));
+      box-shadow: 0 30px 70px rgba(0, 0, 0, .5);
+      opacity: 0;
+      transform: translateX(-50%) scale(.86);
+      transition: transform .55s cubic-bezier(.22, .61, .36, 1), opacity .55s ease, filter .55s ease;
+      will-change: transform, opacity;
+    }
+
+    .ts-card.is-active {
+      z-index: 4;
+      opacity: 1;
+      filter: none;
+      transform: translateX(-50%) scale(1);
+      border-color: rgba(255, 255, 255, .55);
+      box-shadow:
+        0 34px 80px rgba(0, 0, 0, .55),
+        0 0 60px rgba(255, 255, 255, .18);
+    }
+
+    .ts-card.is-prev,
+    .ts-card.is-next {
+      z-index: 2;
+      opacity: .5;
+      filter: blur(3px);
+    }
+
+    .ts-card.is-prev { transform: translateX(calc(-50% - 320px)) scale(.9); }
+    .ts-card.is-next { transform: translateX(calc(-50% + 320px)) scale(.9); }
+
+    .ts-card.is-far-prev,
+    .ts-card.is-far-next {
+      z-index: 1;
+      opacity: .16;
+      filter: blur(6px);
+    }
+
+    .ts-card.is-far-prev { transform: translateX(calc(-50% - 560px)) scale(.8); }
+    .ts-card.is-far-next { transform: translateX(calc(-50% + 560px)) scale(.8); }
+
+    /* Opaque category colors cycled across the testimonial cards.
+       Placed after .is-active so they override its background. */
+    .ts-card.c-orange { background: #E9522B; }
+    .ts-card.c-grey   { background: #6F9B9B; }
+    .ts-card.c-purple { background: #8B4B88; }
+    .ts-card.c-green  { background: #64BC8A; }
+    .ts-card.c-blue   { background: #00B3D9; }
+    .ts-card.c-yellow { background: #FFCC00; }
+    .ts-card.c-red    { background: #FE383C; }
+    .ts-card.c-pink   { background: #E67071; }
+
+    /* Yellow is too light for white text — use dark ink. */
+    .ts-card.c-yellow p,
+    .ts-card.c-yellow .ts-name { color: #1c1606; }
+    .ts-card.c-yellow .ts-quote { color: rgba(28, 22, 6, .32); }
+    .ts-card.c-yellow .ts-outcome { color: rgba(28, 22, 6, .7); }
+    .ts-card.c-yellow mark {
+      background: rgba(28, 22, 6, .14);
+      color: #1c1606;
+      box-shadow: inset 0 0 0 1px rgba(28, 22, 6, .24);
+    }
+
+    .ts-quote {
+      height: 34px;
+      color: rgba(255, 255, 255, .5);
+      font-size: 76px;
+      font-weight: 900;
+      line-height: .9;
+    }
+
+    .ts-card p {
+      flex: 1 1 auto;
+      margin: 32px 0 30px;
+      color: rgba(255, 255, 255, .9);
+      font-size: 21px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .ts-card mark {
+      border-radius: 4px;
+      padding: 0 5px;
+      background: rgba(255, 255, 255, .24);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .4);
+    }
+
+    .ts-person {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+    }
+
+    .ts-avatar {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .ts-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .ts-avatar::after {
+      content: "";
+      position: absolute;
+      right: 1px;
+      bottom: 2px;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0d0f10;
+      border-radius: 50%;
+      background: #20d064;
+    }
+
+    .ts-name {
+      display: block;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .ts-outcome {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, .78);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    @media (max-width: 980px) {
+      .ts-card.is-prev { transform: translateX(calc(-50% - 240px)) scale(.86); }
+      .ts-card.is-next { transform: translateX(calc(-50% + 240px)) scale(.86); }
+      .ts-card.is-far-prev { transform: translateX(calc(-50% - 430px)) scale(.76); }
+      .ts-card.is-far-next { transform: translateX(calc(-50% + 430px)) scale(.76); }
+    }
+
+    @media (max-width: 640px) {
+      .ts-showcase {
+        width: min(100% - 28px, var(--max));
+        min-height: 430px;
+        margin-top: 36px;
+      }
+
+      .ts-track { min-height: 430px; }
+      .ts-controls { top: 0; }
+
+      .ts-arrow { width: 44px; height: 44px; }
+      .ts-arrow svg { width: 18px; height: 18px; }
+
+      .ts-card {
+        top: 52px;
+        width: min(360px, calc(100% - 16px));
+        min-height: 318px;
+        padding: 32px 28px 26px;
+        border-radius: 20px;
+      }
+
+      .ts-card p {
+        margin: 26px 0 24px;
+        font-size: 19px;
+      }
+
+      .ts-card.is-prev,
+      .ts-card.is-next,
+      .ts-card.is-far-prev,
+      .ts-card.is-far-next {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    /* ===== FAQ (matches icontraining.app accordion style) ===== */
+    .faq {
+      display: grid;
+      gap: 16px;
+      max-width: 860px;
+      margin-top: 36px;
+    }
+
+    .faq-item {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #18181b;
+    }
+
+    .faq-item > button {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      padding: 22px 24px;
+      font-size: 21px;
+      font-weight: 700;
+      text-align: left;
+      transition: color .2s ease;
+    }
+
+    .faq-item > button:hover { color: var(--accent); }
+
+    .faq-chev {
+      flex: 0 0 auto;
+      width: 20px;
+      height: 20px;
+      color: var(--faint);
+      transition: transform .3s ease, color .3s ease;
+    }
+
+    .faq-item.active .faq-chev {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .35s ease;
+    }
+
+    .faq-item.active .faq-answer { grid-template-rows: 1fr; }
+
+    .faq-answer > div { overflow: hidden; }
+
+    .faq-answer p {
+      margin: 0 24px 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cycle-text,
+      .cycle-bg,
+      .hero-symbol img { animation: none !important; }
+      .hero-symbol img:first-child { opacity: 1; }
+    }
+
     @media (max-width: 980px) {
       .nav-inner {
         grid-template-columns: 1fr auto;
@@ -1024,19 +1335,8 @@
       .mobile-menu { display: flex; }
 
       .hero {
-        min-height: 760px;
-        align-items: flex-start;
-      }
-
-      .hero-media {
-        inset: 26% -20% 0 10%;
-        opacity: .55;
-      }
-
-      .hero-media::before {
-        background:
-          linear-gradient(90deg, #000 0%, rgba(0, 0, 0, .72) 32%, rgba(0, 0, 0, .10) 100%),
-          linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0) 45%);
+        min-height: 520px;
+        align-items: center;
       }
 
       .hero-content {
@@ -1052,13 +1352,8 @@
       .stat:nth-child(odd) { border-left: 0; }
       .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
 
-      .split,
       .feature-panel {
         grid-template-columns: 1fr;
-      }
-
-      .phone-wrap {
-        width: min(100%, 330px);
       }
 
       .feature-copy,
@@ -1067,13 +1362,36 @@
         padding: 42px;
       }
 
-      .card-grid,
-      .gain-grid,
-      .testimonial-grid {
+      .gain-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .testimonial-card.featured { grid-row: auto; }
+      .mission-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .mission-row .mission-visual { order: 0; }
+
+      .lanes {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .lane { min-width: 0; padding: 20px; }
+      .lane.active { flex-grow: 0; }
+      .lane-content { width: auto; }
+
+      .lane-title {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 26px;
+      }
+
+      .lane-desc,
+      .lane-tag { display: none; }
+      .lane.active .lane-desc { display: block; }
+      .lane.active .lane-tag { display: inline-flex; }
     }
 
     @media (max-width: 640px) {
@@ -1091,44 +1409,43 @@
       .mobile-controls .btn { min-height: 38px; padding: 0 14px; font-size: 15px; }
 
       .hero {
-        min-height: 820px;
-      }
-
-      .hero-media {
-        inset: 35% -44% 0 -8%;
+        min-height: auto;
       }
 
       h1 {
-        font-size: 58px;
+        font-size: clamp(22px, 6vw, 30px);
       }
 
       .hero p,
       .section-lead {
-        font-size: 20px;
+        font-size: 18px;
       }
 
-      .button-row {
-        align-items: stretch;
+      .hero-headline-row {
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+
+      .hero-symbol { width: 56px; height: 76px; margin: 0; }
+
+      .hero-form {
         flex-direction: column;
       }
 
-      .button-row .btn {
-        width: 100%;
-      }
+      .hero-form .submit { width: 100%; }
 
       .section {
         padding: 72px 0;
       }
 
       .section-title {
-        font-size: 44px;
+        font-size: clamp(30px, 8.5vw, 44px);
       }
 
       .stats-grid,
       .process,
-      .card-grid,
-      .gain-grid,
-      .testimonial-grid {
+      .gain-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1139,14 +1456,6 @@
       }
 
       .stat:first-child { border-top: 0; }
-
-      .split {
-        gap: 44px;
-      }
-
-      .step {
-        grid-template-columns: 1fr;
-      }
 
       .feature-panel,
       .apply-panel {
@@ -1163,11 +1472,6 @@
         background:
           linear-gradient(180deg, rgba(0, 0, 0, .88), rgba(0, 0, 0, .76)),
           url("assets/versioned/cta/waitlist-cta-v1.png") center bottom / 130% auto no-repeat;
-      }
-
-      .floating-chip {
-        right: 0;
-        bottom: 14%;
       }
 
       .footer-inner,
@@ -1189,6 +1493,7 @@
         <li><a href="#mission">Mission</a></li>
         <li><a href="#roles">Roles</a></li>
         <li><a href="#stories">Stories</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
       <div class="nav-action">
         <a href="#apply" class="btn" data-apply-cta>Apply Now <span aria-hidden="true">↗</span></a>
@@ -1208,21 +1513,37 @@
     <li><a href="#mission">Mission</a></li>
     <li><a href="#roles">Roles</a></li>
     <li><a href="#stories">Stories</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
 
   <header class="hero">
-    <div class="hero-media" aria-hidden="true">
-      <img src="assets/versioned/home/icon-guy-with-phone-v1.png" alt="" />
-    </div>
     <div class="wrap hero-content">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span>Now recruiting - Growth Team</div>
-        <h1>Don't just learn marketing. <span class="accent">Help build the machine.</span></h1>
-        <p>Join the pre-launch growth operation behind Icon Training. Real work. Real feedback. Real experience inside a fitness-tech company being built from the ground up.</p>
-        <div class="button-row">
-          <a href="#apply" class="btn btn-pill" data-apply-cta>Apply to Join <span aria-hidden="true">↗</span></a>
-          <a href="#mission" class="btn btn-ghost">See how it works <span aria-hidden="true">↗</span></a>
+        <div class="hero-headline-row">
+          <div class="hero-symbol" aria-hidden="true">
+            <img src="assets/versioned/home/icon-symbol-orange-v1.png" alt="" style="animation-delay: 0s">
+            <img src="assets/versioned/home/icon-symbol-grey-v1.png" alt="" style="animation-delay: -2s">
+            <img src="assets/versioned/home/icon-symbol-purple-v1.png" alt="" style="animation-delay: -4s">
+            <img src="assets/versioned/home/icon-symbol-green-v1.png" alt="" style="animation-delay: -6s">
+            <img src="assets/versioned/home/icon-symbol-blue-v1.png" alt="" style="animation-delay: -8s">
+            <img src="assets/versioned/home/icon-symbol-yellow-v1.png" alt="" style="animation-delay: -10s">
+            <img src="assets/versioned/home/icon-symbol-red-v1.png" alt="" style="animation-delay: -12s">
+            <img src="assets/versioned/home/icon-symbol-pink-v1.png" alt="" style="animation-delay: -14s">
+          </div>
+          <h1>We're building the future of fitness, and you are part of it<br>
+          Gain hands-on <span class="accent cycle-text">experience</span> and real industry <span class="accent cycle-text">exposure.</span><br>
+          Be part of something that matters, <span class="accent cycle-text">from the start.</span></h1>
         </div>
+        <p>Join the pre-launch growth operation behind Icon Training. Real work. Real feedback. Real experience inside a fitness-tech company being built from the ground up.</p>
+        <form class="hero-form application-form" data-note-id="hero-note" action="/api/apply" method="post">
+          <div class="guard-field" aria-hidden="true">
+            <label for="hero-company-website">Company website</label>
+            <input id="hero-company-website" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input name="email" type="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" required>
+          <button class="btn btn-pill submit cycle-bg cta-invert" type="submit">Get My Discord Invite <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="note" id="hero-note" aria-live="polite">We'll email your Discord invite right after you submit.</p>
       </div>
     </div>
   </header>
@@ -1231,43 +1552,38 @@
     <div class="wrap stats-grid">
       <div class="stat"><strong>55+</strong><span>Signed athlete contracts</span></div>
       <div class="stat"><strong>15M+</strong><span>Combined follower reach</span></div>
-      <div class="stat"><strong>230+</strong><span>Growth contributors</span></div>
-      <div class="stat"><strong>PRE</strong><span>Launch opportunity</span></div>
+      <div class="stat"><strong>350+</strong><span>Growth contributors</span></div>
+      <div class="stat"><strong>REAL</strong><span>Industry opportunity</span></div>
     </div>
   </section>
 
   <section class="section" id="mission">
-    <div class="wrap split">
-      <div>
+    <div class="wrap">
+      <div class="section-header">
         <span class="label">What is Icon Training?</span>
         <h2 class="section-title">AI-powered versions of <span class="accent">real coaches.</span></h2>
         <p class="section-lead">Icon Training turns the philosophy, voice and expertise of athletes and trainers into intelligent coaching experiences users can access from their phone.</p>
-        <div class="steps">
-          <article class="step">
-            <div class="step-num">1</div>
-            <div><h3>Trainers create an Icon</h3><p>An AI version of themselves: their coaching style, experience, tone and decision-making.</p></div>
-          </article>
-          <article class="step">
-            <div class="step-num">2</div>
-            <div><h3>Users subscribe for coaching</h3><p>Personalised fitness guidance from people they already trust, available whenever they need it.</p></div>
-          </article>
-          <article class="step">
-            <div class="step-num">3</div>
-            <div><h3>Icons improve over time</h3><p>Through trainer feedback, user interaction and ongoing refinement, every Icon becomes more valuable.</p></div>
-          </article>
-        </div>
       </div>
-
-      <div class="phone-wrap" aria-hidden="true">
-        <div class="phone-shell">
-          <div class="phone-screen">
-            <img src="assets/versioned/features/ai-powered-chat-v1.png" alt="" />
+      <div class="mission">
+        <div class="mission-row">
+          <div class="mission-text">
+            <div class="step-num">1</div>
+            <h3>Trainers create an Icon</h3>
+            <p>An AI version of themselves: their coaching style, experience, tone and decision-making.</p>
           </div>
-          <img class="phone-frame" src="assets/versioned/features/phone-frame-v1.png" alt="" />
+          <div class="mission-visual">
+            <img src="assets/versioned/features/trainers-create-icon-v1.png" alt="Trainers create an Icon — Icon Training app screens" />
+          </div>
         </div>
-        <div class="floating-chip">
-          <strong>Your Icon adapts</strong>
-          <span>Guidance that reacts to recovery, consistency and real life.</span>
+        <div class="mission-row reverse">
+          <div class="mission-text">
+            <div class="step-num">2</div>
+            <h3>Users subscribe for coaching</h3>
+            <p>Personalised fitness guidance from people they already trust, available whenever they need it.</p>
+          </div>
+          <div class="mission-visual">
+            <img src="assets/versioned/features/users-subscribe-v1.png" alt="Users subscribe for coaching — Icon Training app screens" />
+          </div>
         </div>
       </div>
     </div>
@@ -1282,20 +1598,20 @@
       </div>
       <div class="feature-list" aria-label="Growth team principles">
         <article class="acc active">
-          <button type="button">Real work, not pretend tasks <span class="plus" aria-hidden="true">+</span></button>
-          <p>You contribute to outreach, content, testing, recruitment and community growth for a live start-up.</p>
+          <button type="button">Get industry experience <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body"><div><p>Update your CV with real start-up experience - not a mock portfolio.</p></div></div>
         </article>
         <article class="acc">
-          <button type="button">High standards <span class="plus" aria-hidden="true">+</span></button>
-          <p>You get useful feedback, clear expectations and the chance to raise the quality of your work quickly.</p>
+          <button type="button">Positive work reference <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body"><div><p>Give prospective employers the founders' email address - he will fight for you to get the job!</p></div></div>
         </article>
         <article class="acc">
-          <button type="button">Supportive team <span class="plus" aria-hidden="true">+</span></button>
-          <p>You work with contributors around the world who are learning, testing ideas and building momentum together.</p>
+          <button type="button">International team collaboration <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body"><div><p>We operate a massive network of young professionals - all supporting each other's success.</p></div></div>
         </article>
         <article class="acc">
-          <button type="button">Clear opportunity <span class="plus" aria-hidden="true">+</span></button>
-          <p>The people who communicate well, execute consistently and improve can earn more trust and responsibility.</p>
+          <button type="button">Clear pathway to employment <span class="plus" aria-hidden="true">+</span></button>
+          <div class="acc-body"><div><p>We regularly support contributors with getting paid opportunities and clients - so you can earn.</p></div></div>
         </article>
       </div>
     </div>
@@ -1308,13 +1624,63 @@
         <h2 class="section-title">Help grow the brand from the <span class="accent">inside.</span></h2>
         <p class="section-lead">Join a role that matches your skills, interests and ambition. You can start focused, then grow into new areas as you prove yourself.</p>
       </div>
-      <div class="card-grid">
-        <article class="card"><span class="card-kicker">PT</span><h3>Partnerships</h3><p>Conduct outreach to athletes, trainers and fitness creators. Build conversations that create commercial opportunities.</p><span class="tag">Revenue share available</span></article>
-        <article class="card"><span class="card-kicker">CT</span><h3>Content</h3><p>Create social content, visual assets, short-form edits and campaign ideas that sharpen the Icon Training brand.</p><span class="tag">Portfolio work</span></article>
-        <article class="card"><span class="card-kicker">AF</span><h3>Affiliates</h3><p>Help build wider distribution channels, community partnerships and growth loops around the product.</p><span class="tag">Brand building</span></article>
-        <article class="card"><span class="card-kicker">QA</span><h3>App Testing</h3><p>Test the app, report bugs, suggest improvements and help shape the product before public launch.</p><span class="tag">Product influence</span></article>
-        <article class="card"><span class="card-kicker">RC</span><h3>Recruitment</h3><p>Help identify, welcome and support new contributors as the Growth Team expands internationally.</p><span class="tag">Leadership pathway</span></article>
-        <article class="card"><span class="card-kicker">FD</span><h3>Fundraising</h3><p>Support research, investor preparation and strategic growth work for people ready for a higher-trust role.</p><span class="tag">Invite only</span></article>
+      <div class="lanes" role="tablist" aria-label="Growth team roles">
+        <button class="lane active" type="button" aria-expanded="true" style="--lane: #00B3D9">
+          <span class="lane-icon"><img src="assets/versioned/roles/app-testing-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">App Testing</h3>
+            <p class="lane-desc">Test the app, report bugs, suggest improvements and help shape the product before public launch.</p>
+            <span class="lane-tag">Product Influence</span>
+          </div>
+        </button>
+        <button class="lane" type="button" aria-expanded="false" style="--lane: #FFCC00">
+          <span class="lane-icon"><img src="assets/versioned/roles/partnerships-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">Partnerships</h3>
+            <p class="lane-desc">Conduct outreach to athletes, trainers and fitness creators. Build conversations that create commercial opportunities.</p>
+            <span class="lane-tag">Revenue Share</span>
+          </div>
+        </button>
+        <button class="lane" type="button" aria-expanded="false" style="--lane: #FE383C">
+          <span class="lane-icon"><img src="assets/versioned/roles/content-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">Content</h3>
+            <p class="lane-desc">Create social content, visual assets, short-form edits and campaign ideas that sharpen the Icon Training brand.</p>
+            <span class="lane-tag">Portfolio Work</span>
+          </div>
+        </button>
+        <button class="lane" type="button" aria-expanded="false" style="--lane: #64BC8A">
+          <span class="lane-icon"><img src="assets/versioned/roles/fundraising-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">Fundraising</h3>
+            <p class="lane-desc">Support research, investor preparation and strategic growth work for people ready for a higher-trust role.</p>
+            <span class="lane-tag">Invite Only</span>
+          </div>
+        </button>
+        <button class="lane" type="button" aria-expanded="false" style="--lane: #6F9B9B">
+          <span class="lane-icon"><img src="assets/versioned/roles/recruitment-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">Recruitment</h3>
+            <p class="lane-desc">Help identify, welcome and support new contributors as the Growth Team expands internationally.</p>
+            <span class="lane-tag">Business Growth</span>
+          </div>
+        </button>
+        <button class="lane" type="button" aria-expanded="false" style="--lane: #8B4B88">
+          <span class="lane-icon"><img src="assets/versioned/roles/onboarding-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">Onboarding</h3>
+            <p class="lane-desc">Guide new contributors through the first steps, role selection, Discord structure and team expectations.</p>
+            <span class="lane-tag">Community Support</span>
+          </div>
+        </button>
+        <button class="lane" type="button" aria-expanded="false" style="--lane: #E67071">
+          <span class="lane-icon"><img src="assets/versioned/roles/workshops-v1.png" alt="" /></span>
+          <div class="lane-content">
+            <h3 class="lane-title">Workshops</h3>
+            <p class="lane-desc">Support educational sessions, contributor development and shared learning across the Growth Team.</p>
+            <span class="lane-tag">Skill Development</span>
+          </div>
+        </button>
       </div>
     </div>
   </section>
@@ -1341,17 +1707,68 @@
     <div class="wrap">
       <div class="section-header">
         <span class="label">Contributor stories</span>
-        <h2 class="section-title">Real people. <span class="accent">Real progress.</span></h2>
-        <p class="section-lead">Growth Team contributors are not watching from the sidelines. They are building, learning, improving and creating career momentum.</p>
-      </div>
-      <div class="testimonial-grid">
-        <article class="testimonial-card featured"><div class="quote-mark">"</div><p>The skills, confidence and experience I've gained helped me secure a full-time paid Social Media Internship. I'm incredibly grateful for the opportunity to have been part of such a positive and inspiring team.</p><div class="reaction"><span>4 likes</span><span>4 saves</span></div><div class="person"><strong>Divya</strong><span class="outcome">Career progression</span></div></article>
-        <article class="testimonial-card"><div class="quote-mark">"</div><p>I didn't realise I was shaping the beginning of my career path, but that's exactly what happened when I joined Icon Training.</p><div class="person"><strong>Abeeda</strong><span class="outcome">Portfolio + confidence</span></div></article>
-        <article class="testimonial-card"><div class="quote-mark">"</div><p>Those reviews shaped me. They challenged how I thought about my craft and raised my standards in ways I hadn't expected.</p><div class="person"><strong>Kelvin</strong><span class="outcome">Creative development</span></div></article>
-        <article class="testimonial-card"><div class="quote-mark">"</div><p>The pace is lightning-fast, the feedback is real, and the growth is limitless.</p><div class="person"><strong>Viktoriia</strong><span class="outcome">Start-up exposure</span></div></article>
-        <article class="testimonial-card"><div class="quote-mark">"</div><p>It is rare to find a role this early on where you're not just learning, you're actually building something real.</p><div class="person"><strong>Abeeda</strong><span class="outcome">Real-world work</span></div></article>
+        <h2 class="section-title">Real people.<br><span class="accent">Real progress.</span></h2>
+        <p class="section-lead">Growth Team contributors are building, learning, improving and creating career momentum. We have helped multiple contributors to get paid clients through positive referrals and support.</p>
       </div>
     </div>
+      <div class="ts-showcase" aria-label="Contributor testimonials" aria-roledescription="carousel">
+        <div class="ts-controls">
+          <button class="ts-arrow" type="button" data-ts-prev aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="ts-arrow" type="button" data-ts-next aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+        <div class="ts-track">
+          <article class="ts-card c-orange">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>The skills, confidence, and <mark>experience</mark> I gained helped me secure a full-time paid Social Media Internship.</p>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/divya-v1.jpg" alt="Divya" /></span><span><strong class="ts-name">Divya</strong><span class="ts-outcome">Paid internship</span></span></div>
+          </article>
+          <article class="ts-card c-grey">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>From the very beginning, I felt extremely <mark>welcomed</mark>. The support system was excellent, and no one was left behind.</p>
+            <div class="ts-person"><span class="ts-avatar" style="background: #00B3D9" aria-hidden="true">R</span><span><strong class="ts-name">Rex</strong><span class="ts-outcome">Day-one support</span></span></div>
+          </article>
+          <article class="ts-card c-purple">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>What started as a placement opportunity became something much more <mark>meaningful</mark>. I moved fully into Icon Training to gain more exposure and understand how a start-up grows.</p>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/muskan-v1.jpg" alt="Muskan" /></span><span><strong class="ts-name">Muskan</strong><span class="ts-outcome">Start-up exposure</span></span></div>
+          </article>
+          <article class="ts-card c-green">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>ICON pushed me out of ordinary, templated work and forced me to elevate my <mark>standards</mark>. My work here carries real-world weight.</p>
+            <div class="ts-person"><span class="ts-avatar" style="background: #8B4B88" aria-hidden="true">KE</span><span><strong class="ts-name">Kenechukwu Emmanuel</strong><span class="ts-outcome">Raised standards</span></span></div>
+          </article>
+          <article class="ts-card c-blue">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>I secured five international <mark>partnerships</mark> through targeted outreach, strengthening my skills in partnerships, strategy, and relationship management.</p>
+            <div class="ts-person"><span class="ts-avatar" style="background: #64BC8A" aria-hidden="true">SA</span><span><strong class="ts-name">Sayed Abdullah</strong><span class="ts-outcome">5 partnerships closed</span></span></div>
+          </article>
+          <article class="ts-card c-yellow">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>I joined to build my CV, but ended up building my entire LinkedIn presence and shaping the beginning of my <mark>career</mark> path.</p>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/abeeda-v1.jpg" alt="Abeeda" /></span><span><strong class="ts-name">Abeeda</strong><span class="ts-outcome">Career path shaped</span></span></div>
+          </article>
+          <article class="ts-card c-red">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>The feedback challenged how I thought about my <mark>craft</mark> and raised my standards in ways I hadn't expected.</p>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/kelvin-v1.jpg" alt="Kelvin" /></span><span><strong class="ts-name">Kelvin</strong><span class="ts-outcome">Creative growth</span></span></div>
+          </article>
+          <article class="ts-card c-pink">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>I went from reading about digital trends to actually <mark>living</mark> them, building bridges between global fitness legends and cutting-edge AI.</p>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/viktoriia-v1.jpg" alt="Viktoriia Z." /></span><span><strong class="ts-name">Viktoriia Z.</strong><span class="ts-outcome">Hands-on impact</span></span></div>
+          </article>
+          <article class="ts-card c-orange">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>I joined to do design work for my portfolio, but ended up building confidence, gaining <mark>clients</mark>, and developing new skills.</p>
+            <div class="ts-person"><span class="ts-avatar" style="background: #FE383C" aria-hidden="true">N</span><span><strong class="ts-name">Neira</strong><span class="ts-outcome">New clients gained</span></span></div>
+          </article>
+          <article class="ts-card c-grey">
+            <div class="ts-quote" aria-hidden="true">&ldquo;</div>
+            <p>Joining this Discord community turned out to be one of the best <mark>decisions</mark> for my career growth.</p>
+            <div class="ts-person"><span class="ts-avatar"><img src="assets/versioned/contributors/jonah-v1.jpg" alt="Jonah" /></span><span><strong class="ts-name">Jonah</strong><span class="ts-outcome">Career growth</span></span></div>
+          </article>
+        </div>
+      </div>
   </section>
 
   <section class="section">
@@ -1359,10 +1776,50 @@
       <span class="label">How it works</span>
       <h2 class="section-title">Apply. Join Discord. <span class="accent">Start building.</span></h2>
       <div class="process">
-        <article class="process-card"><strong>01</strong><h3>Apply</h3><p>Submit your details and choose the role that interests you most.</p></article>
-        <article class="process-card"><strong>02</strong><h3>Join</h3><p>Receive your Discord invite and start in the onboarding channels.</p></article>
-        <article class="process-card"><strong>03</strong><h3>Choose</h3><p>Select your role and read the relevant guide before contributing.</p></article>
+        <article class="process-card"><strong>01</strong><h3>Join</h3><p>Access the Discord server where we are running the operation.</p></article>
+        <article class="process-card"><strong>02</strong><h3>Onboarding</h3><p>Attend one of the weekly onboarding sessions. Choose your role and introduce yourself.</p></article>
+        <article class="process-card"><strong>03</strong><h3>Familiarise</h3><p>Read through the guidance and understand how you can contribute.</p></article>
         <article class="process-card"><strong>04</strong><h3>Execute</h3><p>Communicate clearly, complete useful work, and build momentum.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="faq">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="label">FAQ</span>
+        <h2 class="section-title">Questions before <span class="accent">you join?</span></h2>
+        <p class="section-lead">The Growth Team is designed to be flexible, practical, and valuable. You are not expected to know everything before starting. The aim is to give you a real environment to learn, contribute, and grow.</p>
+      </div>
+      <div class="faq">
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">Do I need to perform all the roles?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>No. You only need to choose the role or roles that suit your interests, skills, and goals. Some contributors focus on one area, while others get involved in multiple teams over time.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">Are there fixed hours?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>No. The Growth Team is fully flexible. There are weekly sessions, workshops, and team huddles available, but you are not expected to work fixed hours like a traditional job.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">How much time do I need to commit?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>There is no strict minimum, but the more consistently you contribute, the more you will gain from the opportunity. As a general guide, a few focused hours per week is enough to stay involved, complete tasks, and build momentum.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">Is there a stipend or salary?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>The Growth Team is currently an unpaid contributor programme. However, some roles may include performance-based opportunities, such as revenue share for successful partnerships or kickback for fundraising. Contributors who show strong commitment may also be considered for future leadership or paid opportunities as the company grows.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">How long is the internship?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>There is no fixed end date. Most contributors stay involved for as long as the experience remains useful, valuable, and aligned with their goals. You can contribute short-term to build experience, or stay longer to pursue leadership, portfolio work, and deeper involvement.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">Do I receive an offer letter?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>If necessary, you can receive one upon request after your onboarding.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">Do I receive a certificate?<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="faq-answer"><div><p>If necessary, you can receive a certificate upon request following participation of 3 months.</p></div></div>
+        </article>
       </div>
     </div>
   </section>
@@ -1373,14 +1830,14 @@
         <span class="label">Ready to join us?</span>
         <h2 class="section-title">Become part of the <span class="accent">Growth Team.</span></h2>
         <p class="section-lead">Drop your email below and we'll send your Discord invite straight to your inbox.</p>
-        <form class="form" id="application-form" action="/api/apply" method="post">
+        <form class="form application-form" data-note-id="apply-note" action="/api/apply" method="post">
           <div class="guard-field" aria-hidden="true">
             <label for="company-website">Company website</label>
             <input id="company-website" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
           </div>
           <div><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required></div>
-          <button class="btn submit" type="submit" id="application-submit">Get My Discord Invite <span aria-hidden="true">↗</span></button>
-          <p class="note" id="form-note" aria-live="polite">We'll email your Discord invite right after you submit.</p>
+          <button class="btn submit" type="submit">Get My Discord Invite <span aria-hidden="true">↗</span></button>
+          <p class="note" id="apply-note" aria-live="polite">We'll email your Discord invite right after you submit.</p>
         </form>
       </div>
     </div>
@@ -1395,6 +1852,7 @@
       <div class="footer-links">
         <a href="#mission">Mission</a>
         <a href="#roles">Roles</a>
+        <a href="#faq">FAQ</a>
         <a href="#apply">Apply</a>
         <span>icontraining.app</span>
       </div>
@@ -1450,48 +1908,137 @@
       });
     });
 
-    const applicationForm = document.getElementById("application-form");
-    const applicationSubmit = document.getElementById("application-submit");
-    const formNote = document.getElementById("form-note");
-    const initialFormNote = formNote.textContent;
-
-    const setFormNote = (message, status) => {
-      formNote.textContent = message;
-      formNote.classList.remove("success", "error");
-
-      if (status) {
-        formNote.classList.add(status);
-      }
-    };
-
-    applicationForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      setFormNote(initialFormNote);
-      applicationSubmit.disabled = true;
-      applicationSubmit.textContent = "Sending...";
-
-      try {
-        const response = await fetch(applicationForm.action, {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(new FormData(applicationForm)),
+    document.querySelectorAll(".faq-item button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const willOpen = !item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((faq) => {
+          if (faq !== item) {
+            faq.classList.remove("active");
+            faq.querySelector("button")?.setAttribute("aria-expanded", "false");
+          }
         });
-        const result = await response.json().catch(() => null);
+        item.classList.toggle("active", willOpen);
+        button.setAttribute("aria-expanded", String(willOpen));
+      });
+    });
 
-        if (!response.ok || !result?.success) {
-          setFormNote(result?.message || "Failed to submit application. Please try again.", "error");
-          return;
+    document.querySelectorAll(".lane").forEach((lane) => {
+      lane.addEventListener("click", () => {
+        document.querySelectorAll(".lane").forEach((other) => {
+          const isActive = other === lane;
+          other.classList.toggle("active", isActive);
+          other.setAttribute("aria-expanded", String(isActive));
+        });
+      });
+    });
+
+    document.querySelectorAll(".application-form").forEach((form) => {
+      const note = document.getElementById(form.dataset.noteId);
+      const submit = form.querySelector('button[type="submit"]');
+      const initialNote = note ? note.textContent : "";
+      const initialButtonHtml = submit ? submit.innerHTML : "";
+
+      const setNote = (message, status) => {
+        if (!note) return;
+        note.textContent = message;
+        note.classList.remove("success", "error");
+        if (status) note.classList.add(status);
+      };
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setNote(initialNote);
+
+        if (submit) {
+          submit.disabled = true;
+          submit.textContent = "Sending...";
         }
 
-        applicationForm.reset();
-        setFormNote(result.message || "Application submitted successfully!", "success");
-      } catch (error) {
-        setFormNote("Failed to submit application. Please try again.", "error");
-      } finally {
-        applicationSubmit.disabled = false;
-        applicationSubmit.innerHTML = 'Get My Discord Invite <span aria-hidden="true">↗</span>';
-      }
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(new FormData(form)),
+          });
+          const result = await response.json().catch(() => null);
+
+          if (!response.ok || !result?.success) {
+            setNote(result?.message || "Failed to submit application. Please try again.", "error");
+            return;
+          }
+
+          form.reset();
+          setNote(result.message || "Application submitted successfully!", "success");
+        } catch (error) {
+          setNote("Failed to submit application. Please try again.", "error");
+        } finally {
+          if (submit) {
+            submit.disabled = false;
+            submit.innerHTML = initialButtonHtml;
+          }
+        }
+      });
     });
+    const tsCards = Array.from(document.querySelectorAll(".ts-card"));
+    if (tsCards.length) {
+      const tsShowcase = document.querySelector(".ts-showcase");
+      const tsPrev = document.querySelector("[data-ts-prev]");
+      const tsNext = document.querySelector("[data-ts-next]");
+      const tsReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const TS_INTERVAL = 10000;
+      let tsActive = 0;
+      let tsTimer = null;
+
+      const renderTs = () => {
+        const total = tsCards.length;
+        tsCards.forEach((card, index) => {
+          const offset = (index - tsActive + total) % total;
+          card.classList.remove("is-active", "is-prev", "is-next", "is-far-prev", "is-far-next");
+          card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+          if (offset === 0) card.classList.add("is-active");
+          else if (offset === 1) card.classList.add("is-next");
+          else if (offset === total - 1) card.classList.add("is-prev");
+          else if (offset < total / 2) card.classList.add("is-far-next");
+          else card.classList.add("is-far-prev");
+        });
+      };
+
+      const goTs = (dir) => {
+        const total = tsCards.length;
+        tsActive = (tsActive + dir + total) % total;
+        renderTs();
+      };
+
+      const stopTs = () => {
+        if (tsTimer) {
+          clearInterval(tsTimer);
+          tsTimer = null;
+        }
+      };
+
+      const startTs = () => {
+        stopTs();
+        if (tsReduceMotion.matches || tsCards.length < 2) return;
+        tsTimer = setInterval(() => goTs(1), TS_INTERVAL);
+      };
+
+      tsPrev?.addEventListener("click", () => { goTs(-1); startTs(); });
+      tsNext?.addEventListener("click", () => { goTs(1); startTs(); });
+
+      tsShowcase?.addEventListener("mouseenter", stopTs);
+      tsShowcase?.addEventListener("mouseleave", startTs);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopTs();
+        else startTs();
+      });
+
+      tsReduceMotion.addEventListener?.("change", startTs);
+
+      renderTs();
+      startTs();
+    }
   </script>
 </body>
 </html>

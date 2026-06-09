@@ -271,23 +271,28 @@
 
       .btn > span[aria-hidden="true"]::before,
       .btn > span[aria-hidden="true"]::after {
-        content: "↗";
+        content: "";
         position: absolute;
         inset: 0;
-        display: grid;
-        place-items: center;
-        border-radius: inherit;
-        color: var(--button-icon-color);
-        font-size: 14px;
-        line-height: 1;
+        margin: auto;
+        width: 12px;
+        height: 12px;
+        background-color: var(--button-icon-color);
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
         transition:
           transform 0.3s ease,
           opacity 0.3s ease;
       }
 
       .btn > span[aria-hidden="true"]::after {
-        color: #fff;
-        background: #000;
+        background-color: #fff;
         opacity: 0;
         transform: translate(-100%, 100%);
       }
@@ -300,6 +305,10 @@
       .btn:hover > span[aria-hidden="true"]::after {
         opacity: 1;
         transform: translate(0, 0);
+      }
+
+      .btn:hover > span[aria-hidden="true"] {
+        background: #000;
       }
 
       .mobile-controls,
@@ -1073,7 +1082,7 @@
       }
 
       .cta-invert:hover > span[aria-hidden="true"]::before {
-        color: #000;
+        background-color: #000;
       }
 
       .hero .note {

@@ -1,8 +1,5 @@
 {
   "cleanUrls": true,
-  "builds": [
-    { "src": "api/apply.js", "use": "@vercel/node" }
-  ],
   "functions": {
     "api/*.js": {
       "runtime": "nodejs20.x"

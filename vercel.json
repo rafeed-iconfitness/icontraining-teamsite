@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/apply",
+      "destination": "/api/apply.js"
+    }
+  ]
+}

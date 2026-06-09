@@ -1247,18 +1247,18 @@
       }
 
       .lane-title {
-        display: block;
-        margin: auto 0 0 0;
-        color: #fff;
-        font-size: 30px;
-        font-weight: 900;
-        line-height: 0.95;
-        text-transform: uppercase;
-        white-space: nowrap;
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-        text-align: right; /* forces vertical text to baseline at bottom */
-      }
+  display: block;
+  margin: auto 0 0 0;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: left; /* Change this from right to left */
+}
 
       .lane.active .lane-title {
         writing-mode: horizontal-tb;
@@ -1269,18 +1269,19 @@
 
       .lane-desc {
         display: block;
-        margin: 16px 0 0;
         max-width: 380px;
         color: rgba(255, 255, 255, 0.82);
         font-size: 18px;
         line-height: 1.42;
         opacity: 0;
+        height: 0;
+        overflow: hidden;
+        margin: 0;
         transition: opacity 0.35s ease;
       }
 
       .lane-tag {
         display: inline-flex;
-        margin-top: 22px;
         padding: 7px 12px;
         border-radius: 999px;
         border: 1px solid color-mix(in srgb, var(--lane) 55%, transparent);
@@ -1292,12 +1293,25 @@
         text-transform: uppercase;
         letter-spacing: 0.1em;
         opacity: 0;
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
         transition: opacity 0.35s ease;
       }
 
-      .lane.active .lane-desc,
+      .lane.active .lane-desc {
+        opacity: 1;
+        height: auto;
+        margin: 16px 0 0;
+        transition-delay: 0.15s;
+      }
+
       .lane.active .lane-tag {
         opacity: 1;
+        height: auto;
+        margin-top: 22px;
+        padding: 7px 12px;
         transition-delay: 0.15s;
       }
 
@@ -1390,6 +1404,8 @@
         position: absolute;
         top: 58px;
         left: 50%;
+        user-select: none;
+        -webkit-user-select: none;
         display: flex;
         flex-direction: column;
         width: min(460px, calc(100% - 36px));

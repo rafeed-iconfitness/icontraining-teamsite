@@ -325,9 +325,10 @@
 
     .hero-headline-row {
       display: flex;
-      align-items: flex-start;
-      gap: clamp(18px, 2.6vw, 36px);
+      align-items: center;
+      gap: clamp(14px, 3vw, 36px);
       margin-bottom: 30px;
+      width: 100%;
     }
 
     .label {
@@ -345,12 +346,13 @@
     h1 {
       margin-bottom: 0;
       color: #fff;
-      font-size: clamp(26px, 2.7vw, 34px);
+      font-size: clamp(20px, 4.5vw, 34px);
       font-weight: 700;
       font-style: italic;
       line-height: 1.22;
       letter-spacing: 0;
       text-transform: none;
+      flex: 1 1 auto;
     }
 
     h1 .accent,
@@ -448,6 +450,7 @@
       color: var(--accent);
       font-size: 18px;
       font-weight: 900;
+      flex-shrink: 0;
     }
 
     .card p,
@@ -604,8 +607,18 @@
     }
 
     .process-card {
-      border-top: 1px solid var(--border-strong);
-      padding-top: 22px;
+      padding: 24px 20px;
+      border: 1px solid transparent;
+      border-top-color: var(--border-strong);
+      border-radius: var(--radius);
+      transition: background-color .3s ease, transform .3s ease, border-color .3s ease;
+    }
+    
+    .process-card:hover {
+      background: rgba(255, 255, 255, .03);
+      border-top-color: var(--accent);
+      border-color: rgba(233, 82, 43, .3);
+      transform: translateY(-5px);
     }
 
     .process-card strong {
@@ -751,40 +764,40 @@
 
     .footer-links a:hover { color: var(--accent); }
 
-    /* ===== Brand colour-cycle animation ===== */
+    /* ===== Synchronised Brand colour-cycle animation ===== */
     @keyframes brandcycle {
-      0%    { color: var(--c-orange); }
-      12.5% { color: var(--c-grey); }
-      25%   { color: var(--c-purple); }
-      37.5% { color: var(--c-green); }
-      50%   { color: var(--c-blue); }
-      62.5% { color: var(--c-yellow); }
-      75%   { color: var(--c-red); }
-      87.5% { color: var(--c-pink); }
-      100%  { color: var(--c-orange); }
+      0%, 9.5%    { color: var(--c-orange); }
+      12.5%, 22%  { color: var(--c-grey); }
+      25%, 34.5%  { color: var(--c-purple); }
+      37.5%, 47%  { color: var(--c-green); }
+      50%, 59.5%  { color: var(--c-blue); }
+      62.5%, 72%  { color: var(--c-yellow); }
+      75%, 84.5%  { color: var(--c-red); }
+      87.5%, 97%  { color: var(--c-pink); }
+      100%        { color: var(--c-orange); }
     }
 
     @keyframes brandcycle-bg {
-      0%    { background-color: var(--c-orange); }
-      12.5% { background-color: var(--c-grey); }
-      25%   { background-color: var(--c-purple); }
-      37.5% { background-color: var(--c-green); }
-      50%   { background-color: var(--c-blue); }
-      62.5% { background-color: var(--c-yellow); }
-      75%   { background-color: var(--c-red); }
-      87.5% { background-color: var(--c-pink); }
-      100%  { background-color: var(--c-orange); }
+      0%, 9.5%    { background-color: var(--c-orange); }
+      12.5%, 22%  { background-color: var(--c-grey); }
+      25%, 34.5%  { background-color: var(--c-purple); }
+      37.5%, 47%  { background-color: var(--c-green); }
+      50%, 59.5%  { background-color: var(--c-blue); }
+      62.5%, 72%  { background-color: var(--c-yellow); }
+      75%, 84.5%  { background-color: var(--c-red); }
+      87.5%, 97%  { background-color: var(--c-pink); }
+      100%        { background-color: var(--c-orange); }
     }
 
-    .cycle-text { animation: brandcycle 16s linear infinite; }
-    .cycle-bg { animation: brandcycle-bg 16s linear infinite; }
+    .cycle-text { animation: brandcycle 16s infinite; }
+    .cycle-bg { animation: brandcycle-bg 16s infinite; }
 
     /* ===== Hero colour-cycling icon symbol ===== */
     .hero-symbol {
       position: relative;
       flex: 0 0 auto;
-      width: clamp(60px, 7.5vw, 100px);
-      height: clamp(80px, 10vw, 134px);
+      width: clamp(48px, 10vw, 100px);
+      height: clamp(64px, 13vw, 134px);
       margin: 2px 0 0;
     }
 
@@ -795,25 +808,23 @@
       height: 100%;
       object-fit: contain;
       opacity: 0;
-      animation: symfade 16s linear infinite;
+      animation: symfade 16s infinite;
     }
 
     .hero-symbol img:first-child { opacity: 1; }
     .hero-symbol img:nth-child(1) { animation-delay: 0s; }
-    .hero-symbol img:nth-child(2) { animation-delay: -2s; }
-    .hero-symbol img:nth-child(3) { animation-delay: -4s; }
-    .hero-symbol img:nth-child(4) { animation-delay: -6s; }
+    .hero-symbol img:nth-child(2) { animation-delay: -14s; }
+    .hero-symbol img:nth-child(3) { animation-delay: -12s; }
+    .hero-symbol img:nth-child(4) { animation-delay: -10s; }
     .hero-symbol img:nth-child(5) { animation-delay: -8s; }
-    .hero-symbol img:nth-child(6) { animation-delay: -10s; }
-    .hero-symbol img:nth-child(7) { animation-delay: -12s; }
-    .hero-symbol img:nth-child(8) { animation-delay: -14s; }
+    .hero-symbol img:nth-child(6) { animation-delay: -6s; }
+    .hero-symbol img:nth-child(7) { animation-delay: -4s; }
+    .hero-symbol img:nth-child(8) { animation-delay: -2s; }
 
     @keyframes symfade {
-      0%    { opacity: 0; }
-      3%    { opacity: 1; }
-      12.5% { opacity: 1; }
-      15.5% { opacity: 0; }
-      100%  { opacity: 0; }
+      0%, 9.5%    { opacity: 1; }
+      12.5%, 97.5% { opacity: 0; }
+      100%        { opacity: 1; }
     }
 
     /* ===== Hero inline signup form ===== */
@@ -836,10 +847,7 @@
       white-space: nowrap;
     }
 
-    /* CTA hover: white background, black text.
-       Override the cycle with !important (beats running animations in the
-       cascade) instead of `animation: none`, so the colour-cycle keeps
-       ticking underneath and stays in sync with the headline text. */
+    /* CTA hover: white background, black text. */
     .cta-invert:hover {
       background: #fff !important;
       color: #000;
@@ -850,55 +858,71 @@
 
     .hero .note { text-align: left; margin-top: 4px; }
 
-    /* ===== Mission: two alternating 50:50 rows ===== */
-    .mission { display: grid; gap: 72px; }
-
-    .mission-row {
+    /* ===== What is Icon Training (Tabs Layout) ===== */
+    .mission-tabs-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 60px;
       align-items: center;
     }
 
-    .mission-row.reverse .mission-visual { order: -1; }
-
-    .mission-visual {
-      position: relative;
-      isolation: isolate;
+    .mission-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .mission-visual::before {
-      content: "";
-      position: absolute;
-      inset: 12% 6%;
-      z-index: -1;
-      border-radius: 999px;
-      background: rgba(233, 82, 43, .18);
-      filter: blur(80px);
+    .mission-tab {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      text-align: left;
+      transition: all 0.3s ease;
+      color: #fff;
     }
 
-    .mission-visual img {
-      width: 100%;
-      height: auto;
+    .mission-tab.active {
+      background: rgba(233, 82, 43, 0.08);
+      border-color: rgba(233, 82, 43, 0.4);
     }
 
-    .mission-row .step-num {
-      margin-bottom: 22px;
-    }
-
-    .mission-row h3 {
-      margin-bottom: 14px;
-      font-size: clamp(30px, 4vw, 42px);
+    .mission-tab h3 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 3.5vw, 34px);
       font-weight: 900;
-      line-height: .98;
       text-transform: uppercase;
+      line-height: .98;
     }
 
-    .mission-row p {
+    .mission-tab p {
       margin: 0;
       color: var(--muted);
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.4;
+    }
+
+    .mission-images {
+      position: relative;
+      height: 600px;
+    }
+
+    .mission-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    }
+
+    .mission-img.active {
+      opacity: 1;
     }
 
     /* ===== Choose your lane: click-to-expand columns ===== */
@@ -954,7 +978,10 @@
     .lane-icon img { width: 100%; height: 100%; object-fit: contain; }
 
     .lane-content {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
       margin-top: auto;
       width: 320px;
       max-width: none;
@@ -962,7 +989,7 @@
 
     .lane-title {
       display: block;
-      margin: 0;
+      margin: auto 0 0 0;
       color: #fff;
       font-size: 30px;
       font-weight: 900;
@@ -971,11 +998,14 @@
       white-space: nowrap;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
+      text-align: right; /* forces vertical text to baseline at bottom */
     }
 
     .lane.active .lane-title {
       writing-mode: horizontal-tb;
       transform: none;
+      text-align: left;
+      margin-top: 0;
     }
 
     .lane-desc {
@@ -1018,6 +1048,11 @@
       width: min(var(--max), calc(100% - 64px));
       margin: 48px auto 0;
       min-height: 470px;
+      cursor: grab;
+    }
+    
+    .ts-showcase:active {
+      cursor: grabbing;
     }
 
     .ts-showcase::before {
@@ -1028,11 +1063,21 @@
       background: radial-gradient(ellipse at 50% 46%, rgba(255, 255, 255, .055), transparent 62%);
     }
 
+    /* Fade-out edge gradient overlay */
+    .ts-showcase::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, var(--bg) 0%, transparent 12%, transparent 88%, var(--bg) 100%);
+      z-index: 10;
+    }
+
     .ts-controls {
       position: absolute;
       top: -4px;
       right: 0;
-      z-index: 10;
+      z-index: 15;
       display: flex;
       gap: 14px;
     }
@@ -1086,6 +1131,7 @@
       transform: translateX(-50%) scale(.86);
       transition: transform .55s cubic-bezier(.22, .61, .36, 1), opacity .55s ease, filter .55s ease;
       will-change: transform, opacity;
+      pointer-events: none; /* Only enable interaction on the active or visible cards */
     }
 
     .ts-card.is-active {
@@ -1097,6 +1143,7 @@
       box-shadow:
         0 34px 80px rgba(0, 0, 0, .55),
         0 0 60px rgba(255, 255, 255, .18);
+      pointer-events: auto;
     }
 
     .ts-card.is-prev,
@@ -1104,6 +1151,7 @@
       z-index: 2;
       opacity: .5;
       filter: blur(3px);
+      pointer-events: auto; /* Let users click peek cards */
     }
 
     .ts-card.is-prev { transform: translateX(calc(-50% - 320px)) scale(.9); }
@@ -1119,8 +1167,7 @@
     .ts-card.is-far-prev { transform: translateX(calc(-50% - 560px)) scale(.8); }
     .ts-card.is-far-next { transform: translateX(calc(-50% + 560px)) scale(.8); }
 
-    /* Opaque category colors cycled across the testimonial cards.
-       Placed after .is-active so they override its background. */
+    /* Opaque category colors cycled across the testimonial cards. */
     .ts-card.c-orange { background: #E9522B; }
     .ts-card.c-grey   { background: #6F9B9B; }
     .ts-card.c-purple { background: #8B4B88; }
@@ -1226,48 +1273,6 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .12em;
-    }
-
-    @media (max-width: 980px) {
-      .ts-card.is-prev { transform: translateX(calc(-50% - 240px)) scale(.86); }
-      .ts-card.is-next { transform: translateX(calc(-50% + 240px)) scale(.86); }
-      .ts-card.is-far-prev { transform: translateX(calc(-50% - 430px)) scale(.76); }
-      .ts-card.is-far-next { transform: translateX(calc(-50% + 430px)) scale(.76); }
-    }
-
-    @media (max-width: 640px) {
-      .ts-showcase {
-        width: min(100% - 28px, var(--max));
-        min-height: 430px;
-        margin-top: 36px;
-      }
-
-      .ts-track { min-height: 430px; }
-      .ts-controls { top: 0; }
-
-      .ts-arrow { width: 44px; height: 44px; }
-      .ts-arrow svg { width: 18px; height: 18px; }
-
-      .ts-card {
-        top: 52px;
-        width: min(360px, calc(100% - 16px));
-        min-height: 318px;
-        padding: 32px 28px 26px;
-        border-radius: 20px;
-      }
-
-      .ts-card p {
-        margin: 26px 0 24px;
-        font-size: 19px;
-      }
-
-      .ts-card.is-prev,
-      .ts-card.is-next,
-      .ts-card.is-far-prev,
-      .ts-card.is-far-next {
-        opacity: 0;
-        pointer-events: none;
-      }
     }
 
     /* ===== FAQ (matches icontraining.app accordion style) ===== */
@@ -1378,6 +1383,14 @@
         padding-top: 92px;
       }
 
+      .mission-tabs-container {
+        grid-template-columns: 1fr;
+      }
+      .mission-images {
+        height: 400px;
+        order: -1; /* Push images to the top on mobile */
+      }
+
       .stats-grid,
       .process {
         grid-template-columns: repeat(2, 1fr);
@@ -1388,6 +1401,9 @@
 
       .feature-panel {
         grid-template-columns: 1fr;
+      }
+      .feature-panel::before {
+        background-position: center center;
       }
 
       .feature-copy,
@@ -1400,32 +1416,39 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .mission-row {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .mission-row .mission-visual { order: 0; }
-
       .lanes {
         flex-direction: column;
         height: auto;
       }
 
-      .lane { min-width: 0; padding: 20px; }
-      .lane.active { flex-grow: 0; }
+      .lane {
+        min-width: 0; 
+        padding: 20px;
+        max-height: 85px;
+        transition: max-height .4s ease, border-color .4s ease, background-color .4s ease;
+      }
+      .lane.active { 
+        flex-grow: 0; 
+        max-height: 350px;
+      }
       .lane-content { width: auto; }
 
       .lane-title {
         writing-mode: horizontal-tb;
         transform: none;
         font-size: 26px;
+        text-align: left;
       }
 
       .lane-desc,
       .lane-tag { display: none; }
       .lane.active .lane-desc { display: block; }
       .lane.active .lane-tag { display: inline-flex; }
+
+      .ts-card.is-prev { transform: translateX(calc(-50% - 240px)) scale(.86); }
+      .ts-card.is-next { transform: translateX(calc(-50% + 240px)) scale(.86); }
+      .ts-card.is-far-prev { transform: translateX(calc(-50% - 430px)) scale(.76); }
+      .ts-card.is-far-next { transform: translateX(calc(-50% + 430px)) scale(.76); }
     }
 
     @media (max-width: 640px) {
@@ -1446,22 +1469,10 @@
         min-height: auto;
       }
 
-      h1 {
-        font-size: clamp(22px, 6vw, 30px);
-      }
-
       .hero p,
       .section-lead {
         font-size: 18px;
       }
-
-      .hero-headline-row {
-        flex-direction: column;
-        gap: 14px;
-        margin-bottom: 24px;
-      }
-
-      .hero-symbol { width: 56px; height: 76px; margin: 0; }
 
       .hero-form {
         flex-direction: column;
@@ -1482,14 +1493,18 @@
       .gain-grid {
         grid-template-columns: 1fr;
       }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
       .stat {
         min-height: 118px;
-        border-left: 0;
         border-top: 1px solid var(--border);
+        border-left: 1px solid var(--border);
       }
 
-      .stat:first-child { border-top: 0; }
+      .stat:first-child, .stat:nth-child(2) { border-top: 0; }
 
       .feature-panel,
       .apply-panel {
@@ -1506,6 +1521,46 @@
         background:
           linear-gradient(180deg, rgba(0, 0, 0, .88), rgba(0, 0, 0, .76)),
           url("assets/versioned/cta/waitlist-cta-v1.webp") center bottom / 130% auto no-repeat;
+      }
+
+      .ts-showcase {
+        width: min(100% - 28px, var(--max));
+        min-height: 430px;
+        margin-top: 36px;
+      }
+
+      .ts-track { min-height: 430px; }
+      .ts-controls { top: 0; }
+
+      .ts-arrow { width: 44px; height: 44px; }
+      .ts-arrow svg { width: 18px; height: 18px; }
+
+      .ts-card {
+        top: 52px;
+        width: min(360px, calc(100% - 16px));
+        min-height: 318px;
+        padding: 32px 28px 26px;
+        border-radius: 20px;
+      }
+
+      .ts-card p {
+        margin: 26px 0 24px;
+        font-size: 19px;
+      }
+
+      /* Slightly push out and fade edges so users know there's more */
+      .ts-card.is-prev,
+      .ts-card.is-next {
+        opacity: 0.35;
+        pointer-events: auto;
+      }
+      .ts-card.is-prev { transform: translateX(calc(-50% - 290px)) scale(.85); }
+      .ts-card.is-next { transform: translateX(calc(-50% + 290px)) scale(.85); }
+
+      .ts-card.is-far-prev,
+      .ts-card.is-far-next {
+        opacity: 0;
+        pointer-events: none;
       }
 
       .footer-inner,
@@ -1598,28 +1653,30 @@
         <h2 class="section-title">AI-powered versions of <span class="accent">real coaches.</span></h2>
         <p class="section-lead">Icon Training turns the philosophy, voice and expertise of athletes and trainers into intelligent coaching experiences users can access from their phone.</p>
       </div>
-      <div class="mission">
-        <div class="mission-row">
-          <div class="mission-text">
-            <div class="step-num">1</div>
-            <h3>Trainers create an Icon</h3>
-            <p>An AI version of themselves: their coaching style, experience, tone and decision-making.</p>
-          </div>
-          <div class="mission-visual">
-            <img src="assets/versioned/features/trainers-create-icon-v1.webp" alt="Trainers create an Icon — Icon Training app screens">
-          </div>
+      
+      <div class="mission-tabs-container">
+        <div class="mission-tabs">
+          <button class="mission-tab active" data-tab="1" type="button">
+            <span class="step-num">1</span>
+            <div class="tab-content">
+              <h3>Trainers create an Icon</h3>
+              <p>An AI version of themselves: their coaching style, experience, tone and decision-making.</p>
+            </div>
+          </button>
+          <button class="mission-tab" data-tab="2" type="button">
+            <span class="step-num">2</span>
+            <div class="tab-content">
+              <h3>Users subscribe for coaching</h3>
+              <p>Personalised fitness guidance from people they already trust, available whenever they need it.</p>
+            </div>
+          </button>
         </div>
-        <div class="mission-row reverse">
-          <div class="mission-text">
-            <div class="step-num">2</div>
-            <h3>Users subscribe for coaching</h3>
-            <p>Personalised fitness guidance from people they already trust, available whenever they need it.</p>
-          </div>
-          <div class="mission-visual">
-            <img src="assets/versioned/features/users-subscribe-v1.webp" alt="Users subscribe for coaching — Icon Training app screens">
-          </div>
+        <div class="mission-images" aria-hidden="true">
+          <img src="assets/versioned/features/trainers-create-icon-v1.webp" alt="" class="mission-img active" id="mission-img-1">
+          <img src="assets/versioned/features/users-subscribe-v1.webp" alt="" class="mission-img" id="mission-img-2">
         </div>
       </div>
+      
     </div>
   </section>
 
@@ -1971,6 +2028,22 @@
         });
       });
     });
+    
+    // Icon Mission Section Tabs Logic
+    const missionTabs = document.querySelectorAll('.mission-tab');
+    const missionImgs = document.querySelectorAll('.mission-img');
+    
+    missionTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-tab');
+        
+        missionTabs.forEach(t => t.classList.remove('active'));
+        missionImgs.forEach(img => img.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById('mission-img-' + targetId).classList.add('active');
+      });
+    });
 
     document.querySelectorAll(".application-form").forEach((form) => {
       const note = document.getElementById(form.dataset.noteId);
@@ -2019,15 +2092,22 @@
         }
       });
     });
+    
+    // Contributor Testimonials Logic
     const tsCards = Array.from(document.querySelectorAll(".ts-card"));
     if (tsCards.length) {
       const tsShowcase = document.querySelector(".ts-showcase");
       const tsPrev = document.querySelector("[data-ts-prev]");
       const tsNext = document.querySelector("[data-ts-next]");
       const tsReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      const TS_INTERVAL = 10000;
+      
+      const isMobile = window.innerWidth <= 640;
+      const TS_INTERVAL = isMobile ? 5000 : 5000;
+      
       let tsActive = 0;
       let tsTimer = null;
+      let startX = 0;
+      let isDragging = false;
 
       const renderTs = () => {
         const total = tsCards.length;
@@ -2064,6 +2144,45 @@
 
       tsPrev?.addEventListener("click", () => { goTs(-1); startTs(); });
       tsNext?.addEventListener("click", () => { goTs(1); startTs(); });
+
+      // Swipe / Drag handling
+      tsShowcase?.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        stopTs();
+      }, {passive: true});
+
+      tsShowcase?.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) goTs(1);
+          else goTs(-1);
+        }
+        isDragging = false;
+        startTs();
+      });
+
+      tsShowcase?.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        stopTs();
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        const endX = e.clientX;
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) goTs(1);
+          else goTs(-1);
+        }
+        isDragging = false;
+        startTs();
+      });
 
       tsShowcase?.addEventListener("mouseenter", stopTs);
       tsShowcase?.addEventListener("mouseleave", startTs);

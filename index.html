@@ -405,7 +405,7 @@
       }
 
       .hero-copy {
-        max-width: 1120px;
+        max-width: 100%;
       }
 
       .hero-headline-row {
@@ -436,7 +436,7 @@
       h1 {
         margin-bottom: 0;
         color: #fff;
-        font-size: min(3.8vw, 34px);
+        font-size: clamp(20px, 3.8vw, 44px);
         font-weight: 700;
         font-style: italic;
         line-height: 1.22;
@@ -1573,10 +1573,12 @@
       }
 
       .ts-avatar img {
-        width: 100%;
-        height: 100%;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         object-fit: cover;
+        object-position: center top;
+        display: block;
       }
 
       .ts-avatar::after {
@@ -1610,10 +1612,17 @@
       }
 
       /* ===== FAQ (matches icontraining.app accordion style) ===== */
+      #faq .section-header {
+        max-width: none;
+      }
+
+      #faq .section-lead {
+        max-width: none;
+      }
+
       .faq {
         display: grid;
         gap: 16px;
-        max-width: 860px;
         margin-top: 36px;
       }
 
@@ -1857,6 +1866,19 @@
           min-height: auto;
         }
 
+        .hero-symbol {
+          display: none;
+        }
+
+        h1 {
+          font-size: clamp(22px, 6.5vw, 36px);
+          white-space: normal;
+        }
+
+        h1 br {
+          display: none;
+        }
+
         .hero p,
         .section-lead {
           font-size: 18px;
@@ -2077,7 +2099,7 @@
               />
             </div>
             <h1>
-              We're building the future of fitness, and you are part of it<br />
+              We're building the future of fitness, and you are part of it.<br />
               Gain hands-on
               <span class="accent cycle-text">experience</span> and real
               industry <span class="accent cycle-text">exposure.</span><br />
@@ -2550,7 +2572,10 @@
               The support system was excellent, and no one was left behind.
             </p>
             <div class="ts-person">
-              <span class="ts-avatar avatar-blue" aria-hidden="true">R</span
+              <span class="ts-avatar"
+                ><img
+                  src="assets/versioned/contributors/rexna-v1.jpeg"
+                  alt="Rex" /></span
               ><span
                 ><strong class="ts-name">Rex</strong
                 ><span class="ts-outcome">Day-one support</span></span
@@ -2598,7 +2623,10 @@
               strategy, and relationship management.
             </p>
             <div class="ts-person">
-              <span class="ts-avatar avatar-green" aria-hidden="true">SA</span
+              <span class="ts-avatar"
+                ><img
+                  src="assets/versioned/contributors/sayed-v1.jpeg"
+                  alt="Sayed Abdullah" /></span
               ><span
                 ><strong class="ts-name">Sayed Abdullah</strong
                 ><span class="ts-outcome">5 partnerships closed</span></span
@@ -2666,7 +2694,10 @@
               skills.
             </p>
             <div class="ts-person">
-              <span class="ts-avatar avatar-red" aria-hidden="true">N</span
+              <span class="ts-avatar"
+                ><img
+                  src="assets/versioned/contributors/neira-v1.jpeg"
+                  alt="Neira" /></span
               ><span
                 ><strong class="ts-name">Neira</strong
                 ><span class="ts-outcome">New clients gained</span></span

@@ -7,8 +7,9 @@ const HONEYPOT_MESSAGE = "Unable to submit. Please try again.";
 const ICON_LOGO_EMAIL_URL =
   "https://www.icontraining.app/versioned/brand/icon-logo-email-v1.png";
 
+// ⚠️ WARNING: In-memory maps fail in serverless. 
+// For production, replace this logic with Vercel KV / Redis.
 const rateLimitStore = new Map();
-
 const requesterLimit = { limit: 5, windowMs: 60 * 60 * 1000 };
 const emailLimit = { limit: 2, windowMs: 24 * 60 * 60 * 1000 };
 
@@ -36,12 +37,10 @@ function cleanupRateLimitStore(now) {
     const recentTimestamps = bucket.timestamps.filter(
       (timestamp) => timestamp > now - bucket.windowMs
     );
-
     if (recentTimestamps.length === 0) {
       rateLimitStore.delete(key);
       continue;
     }
-
     if (recentTimestamps.length !== bucket.timestamps.length) {
       rateLimitStore.set(key, {
         timestamps: recentTimestamps,
@@ -75,10 +74,10 @@ function allowRequest(key, config, now) {
 }
 
 function getRequesterSource(req) {
+  // Vercel populates 'x-forwarded-for' reliably
   const forwardedFor = req.headers["x-forwarded-for"]?.split(",")[0]?.trim();
 
   return (
-    req.headers["cf-connecting-ip"]?.trim() ||
     req.headers["x-real-ip"]?.trim() ||
     forwardedFor ||
     req.headers["user-agent"]?.trim() ||
@@ -90,41 +89,7 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function parseBody(req) {
-  return new Promise((resolve, reject) => {
-    let rawBody = "";
-
-    req.on("data", (chunk) => {
-      rawBody += chunk;
-
-      if (rawBody.length > 20_000) {
-        reject(new Error("Request body too large"));
-        req.destroy();
-      }
-    });
-
-    req.on("end", () => {
-      const contentType = req.headers["content-type"] || "";
-
-      try {
-        if (contentType.includes("application/json")) {
-          resolve(JSON.parse(rawBody || "{}"));
-          return;
-        }
-
-        const params = new URLSearchParams(rawBody);
-        resolve(Object.fromEntries(params.entries()));
-      } catch (error) {
-        reject(error);
-      }
-    });
-
-    req.on("error", reject);
-  });
-}
-
 let cachedTransporter = null;
-
 function getTransporter() {
   if (!cachedTransporter) {
     cachedTransporter = nodemailer.createTransport({
@@ -137,7 +102,6 @@ function getTransporter() {
       },
     });
   }
-
   return cachedTransporter;
 }
 
@@ -147,30 +111,26 @@ function buildInviteEmail({ inviteUrl }) {
     "",
     "Join the Discord server, attend onboarding, contribute, succeed.",
     "",
-    inviteUrl
-      ? `Join the Growth Team:\n${inviteUrl}`
-      : "We'll send your Discord invite link in a follow-up email shortly.",
+    inviteUrl ? `Join the Growth Team:\n${inviteUrl}` : "We'll send your Discord invite link in a follow-up email shortly.",
   ].join("\n");
 
   const ctaHtml = inviteUrl
-    ? `
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%;">
-                      <tr>
-                        <td>
-                          <a href="${escapeHtml(inviteUrl)}" style="display:block;background:#FF5733;border-radius:10px;color:#050505;font-size:16px;line-height:20px;font-weight:700;text-align:center;text-decoration:none;padding:15px 18px;">
-                            Join the Growth Team
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
-                    <p style="margin:26px 0 0 0;color:#777777;font-size:13px;line-height:21px;">
-                      If the button does not open, copy this link into your browser:<br>
-                      <a href="${escapeHtml(inviteUrl)}" style="color:#FFB29F;text-decoration:underline;">${escapeHtml(inviteUrl)}</a>
-                    </p>`
-    : `
-                    <p style="margin:0;color:#b8b8b8;font-size:16px;line-height:26px;">
-                      We'll send your Discord invite link in a follow-up email shortly.
-                    </p>`;
+    ? `<table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+          <tr>
+            <td>
+              <a href="${escapeHtml(inviteUrl)}" style="display:block;background:#FF5733;border-radius:10px;color:#050505;font-size:16px;line-height:20px;font-weight:700;text-align:center;text-decoration:none;padding:15px 18px;">
+                Join the Growth Team
+              </a>
+            </td>
+          </tr>
+       </table>
+       <p style="margin:26px 0 0 0;color:#777777;font-size:13px;line-height:21px;">
+         If the button does not open, copy this link into your browser:<br>
+         <a href="${escapeHtml(inviteUrl)}" style="color:#FFB29F;text-decoration:underline;">${escapeHtml(inviteUrl)}</a>
+       </p>`
+    : `<p style="margin:0;color:#b8b8b8;font-size:16px;line-height:26px;">
+         We'll send your Discord invite link in a follow-up email shortly.
+       </p>`;
 
   const html = `
     <!doctype html>
@@ -233,14 +193,8 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  let body;
-
-  try {
-    body = await parseBody(req);
-  } catch (error) {
-    json(res, 400, { success: false, message: "Invalid submission" });
-    return;
-  }
+  // ✅ FIX: Use Vercel's native parsed body instead of custom stream parsing
+  const body = req.body || {};
 
   if (typeof body[HONEYPOT_FIELD] === "string" && body[HONEYPOT_FIELD].trim()) {
     json(res, 400, { success: false, message: HONEYPOT_MESSAGE });
@@ -258,14 +212,12 @@ module.exports = async function handler(req, res) {
   cleanupRateLimitStore(now);
 
   const requesterKey = `growth:requester:${hashValue(getRequesterSource(req))}`;
-
   if (!allowRequest(requesterKey, requesterLimit, now)) {
     json(res, 429, { success: false, message: RATE_LIMIT_MESSAGE });
     return;
   }
 
   const emailKey = `growth:email:${hashValue(email)}`;
-
   if (!allowRequest(emailKey, emailLimit, now)) {
     json(res, 429, { success: false, message: RATE_LIMIT_MESSAGE });
     return;
